@@ -6,8 +6,7 @@ import java.util.List;
 
 public class FileHandler {
 	private List<String[]> decks = new ArrayList<String[]>();
-	private String 
-	String[] deck1 = { "deck1", "Decks\\Deck1.data"};
+	private String[] deck1 = { "deck1", "Decks\\Deck1.data"};
 	
 	public FileHandler(){
 		decks.add(deck1);

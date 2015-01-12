@@ -10,11 +10,11 @@ public class Deck {
 	}
 	
 	public boolean setCard( Card c ){
-		
+		cards.add(c);
 		return false;
 	}
-	public boolean getCard( int i ){
-		
-		return false;
+	public Card getCard( int i ){
+		Card cardReturn = cards.get(i);
+		return cardReturn;
 	}
 }

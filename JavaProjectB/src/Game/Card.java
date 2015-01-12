@@ -2,15 +2,15 @@ package Game;
 
 public class Card {
 	
-	/* String card_name = holds the name of the card */
+	/** String card_name = holds the name of the card */
 	@SuppressWarnings("unused")
 	private String card_name;
 	
-	/* String card_desc = holds the information of the card in text format */
+	/** String card_desc = holds the information of the card in text format */
 	@SuppressWarnings("unused")
 	private String card_desc; 
 	
-	/* int special = holds the special of the card in number format 
+	/** int special = holds the special of the card in number format 
 	 * 0 = nothing
 	 * 1 = spell power = 10 mana
 	 * 2 = defense up = 10 mana
@@ -20,13 +20,13 @@ public class Card {
 	 */
 	private int special;
 	
-	/* int[] card_stats = holds the attack and defense values
+	/** int[] card_stats = holds the attack and defense values
 	 * card_stats[0] = attack
 	 * card_stats[1] = defense
 	 */
 	private int[] card_stats; 
 	
-	/* int rarity = holds the rarity number of the card. numbers are below from worst to best
+	/** int rarity = holds the rarity number of the card. numbers are below from worst to best
 	 * 1 = common (white) 5
 	 * 2 = uncommon (blue) 10 mana
 	 * 3 = rare (purple) = 15 mana
@@ -36,7 +36,7 @@ public class Card {
 	private int rarity;
 	
 	
-	/* Card( Name, Description, Special ability number, Array with attack&defense ) */
+	/** Card( Name, Description, Special ability number, Array with attack&defense ) */
 	public Card(String nm, String desc, int spec, int[] st, int rar) {
 		card_name 	= nm;
 		card_desc 	= desc;
@@ -45,7 +45,7 @@ public class Card {
 		rarity		= rar;
 	}
 	
-	/* getSpecial() returns an integer for what special the card has
+	/** getSpecial() returns an integer for what special the card has
 	 * if none, return null
 	 */
 	public int getSpecial() {
@@ -68,7 +68,7 @@ public class Card {
 		return special;
 	}
 	
-	/* getRarity() returns an integer for what rarity the card has
+	/** getRarity() returns an integer for what rarity the card has
 	 * if none, return null
 	 */
 	public int getRarity() {
@@ -89,28 +89,28 @@ public class Card {
 		return rarity;
 	}
 	
-	/* buffAttack( number of attack gameEngine needs to buff )
+	/** buffAttack( number of attack gameEngine needs to buff )
 	 * Adds #att to the attack of the card
 	 */
 	public void buffAttack(int att) {
 		card_stats[0] += att;
 	}
 	
-	/* debuffAttack( number of attack gameEngine needs to debuff )
+	/** debuffAttack( number of attack gameEngine needs to debuff )
 	 * removes #att attack of the card
 	 */
 	public void debuffAttack(int att) {
 		card_stats[0] -= att;
 	}
 	
-	/* buffDefense( number of defense gameEngine needs to buff )
+	/** buffDefense( number of defense gameEngine needs to buff )
 	 * Adds #def to the  of the card
 	 */
 	public void buffDefense(int def) {
 		card_stats[1] += def;
 	}
 	
-	/* debuffDefense( number of defense gameEngine needs to buff )
+	/** debuffDefense( number of defense gameEngine needs to buff )
 	 * removes #def defense of the card
 	 */
 	public void debuffDefense(int def) {

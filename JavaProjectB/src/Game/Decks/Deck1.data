@@ -4,28 +4,12 @@ Please be careful with changing this file.
 {
 	Deck_name = Guardian Earth
 	Deck_description = ---
+	
 	{
 		Card_name = ---
 		Card_description = ---
-		Card_stats = ---
+		Card_stats = --- : ---
+		Card_special = ---
+		Card_rarity = ---
 	}
-	{
-		Card_name = ---
-		Card_description = ---
-		Card_stats = ---
-	}
-	{
-		Card_name = ---
-		Card_description = ---
-		Card_stats = ---
-	}
-	{
-		Card_name = ---
-		Card_description = ---
-		Card_stats = ---
-	}
-	{
-		Card_name = ---
-		Card_description = ---
-		Card_stats = ---
-	}
+}

@@ -1,10 +1,12 @@
 package Game;
 
+import java.util.ArrayList;
+
 public class Deck {
-	public Card[] cards;
+	public ArrayList<Card> cards = new ArrayList<Card>();
 	
 	public Deck(){
-		cards = new Card[50];
+		
 	}
 	
 	public boolean setCard( Card c ){

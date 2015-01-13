@@ -31,20 +31,27 @@ Please be careful with changing this file.
 		Card_description = A creature resembling a tree. Having life-force to last several ages.
 		Card_stats = 2 : 2
 		Card_special = 2
-		Card_rarity = 2
+		Card_rarity = 1
 	}
 	{
 		Card_name = Ent Ancient
 		Card_description = A creature resembling a tree. Having life-force to last several ages.
 		Card_stats = 2 : 2
 		Card_special = 2
-		Card_rarity = 2
+		Card_rarity = 1
 	}
 	{
 		Card_name = Bramble Thorns
 		Card_description = Annoying Thorns that capture any unfortunate enough to walk near them
 		Card_stats = 1 : 3
-		Card_special = 0
+		Card_special = 4
+		Card_rarity = 1
+	}
+	{
+		Card_name = Bramble Thorns
+		Card_description = Annoying Thorns that capture any unfortunate enough to walk near them
+		Card_stats = 1 : 3
+		Card_special = 4
 		Card_rarity = 1
 	}
 	{
@@ -55,94 +62,87 @@ Please be careful with changing this file.
 		Card_rarity = 4
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
+		Card_name = Thanus
+		Card_description = Thanus, the high commander of Cronos, is a wolf of timber imbued with the power of a titan.
+		Card_stats = 4 : 2
+		Card_special = 3
+		Card_rarity = 3
+	}
+	{
+		Card_name = Wild Boar
+		Card_description = His tusks are unexpectedly sharp.
+		Card_stats = 2 : 1
 		Card_special = 0
 		Card_rarity = 0
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
+		Card_name = Wild Boar
+		Card_description = His tusks are unexpectedly sharp.
+		Card_stats = 2 : 1
 		Card_special = 0
 		Card_rarity = 0
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
-		Card_special = 0
-		Card_rarity = 0
-	}	Card_rarity =
+		Card_name = Forest Flood
+		Card_description = The forest fairies cause a flood to cleanse the Earth of all impurities.
+		Card_stats = 3 : 1
+		Card_special = 4
+		Card_rarity = 2
+	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
+		Card_name = Clay Golem
+		Card_description = Small clay creature imbued with the life force of Gaia by the local Shaman
+		Card_stats = 1 : 1
 		Card_special = 0
 		Card_rarity = 0
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
+		Card_name = Clay Golem
+		Card_description = Small clay creature imbued with the life force of Gaia by the local Shaman
+		Card_stats = 1 : 1
 		Card_special = 0
 		Card_rarity = 0
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
+		Card_name = Clay Golem
+		Card_description = Small clay creature imbued with the life force of Gaia by the local Shaman
+		Card_stats = 1 : 1
 		Card_special = 0
 		Card_rarity = 0
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
-		Card_special = 0
-		Card_rarity = 0
+		Card_name = Forest Fairy
+		Card_description = These nasty creatures always get on your nerves.
+		Card_stats = 2 : 2
+		Card_special = 5
+		Card_rarity = 2
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
-		Card_special = 0
-		Card_rarity = 0
+		Card_name = Forest Fairy
+		Card_description = These nasty creatures always get on your nerves.
+		Card_stats = 2 : 2
+		Card_special = 5
+		Card_rarity = 2
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
-		Card_special = 0
-		Card_rarity = 0
+		Card_name = Earthquake
+		Card_description = This quake will tear down all walls.
+		Card_stats = 5 : 1
+		Card_special = 4
+		Card_rarity = 3
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
+		Card_name = Mountain Goat
+		Card_description = This creature can shout so loud it might cause an avalanche.
+		Card_stats = 2 : 2
 		Card_special = 0
-		Card_rarity = 0
+		Card_rarity = 1
 	}
 	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
+		Card_name = Mountain Goat
+		Card_description = This creature can shout so loud it might cause an avalanche.
+		Card_stats = 2 : 2
 		Card_special = 0
-		Card_rarity = 0
-	}
-	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
-		Card_special = 0
-		Card_rarity = 0
-	}
-	{
-		Card_name = Test
-		Card_description = Test
-		Card_stats = 0 : 1
-		Card_special = 0
-		Card_rarity = 0
+		Card_rarity = 1
 	}
 }

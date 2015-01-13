@@ -42,6 +42,12 @@ public class DrawHandler extends JFrame implements Runnable {
 	
 	/** BufferedImage playField = Hold the background image */
 	private BufferedImage playField = null;
+	private BufferedImage backCard = null;
+	private BufferedImage commonCard = null;
+	private BufferedImage uncommonCard = null;
+	private BufferedImage rareCard = null;
+	private BufferedImage legendaryCard = null;
+	private BufferedImage godlyCard = null;
 
 	/** void run() = Initialize, set thread sleep time(1000ms / frames per second), and run the game */
 	public void run() {
@@ -91,7 +97,28 @@ public class DrawHandler extends JFrame implements Runnable {
 		bbg.drawImage(playField, 0, 0, this);
 
 		bbg.setColor(Color.RED);
-
+		
+		int arraySize = main.playerDeck.inHand.size();
+		
+		for(int i = 0; i < arraySize; i++) {
+			int rarity = main.playerDeck.getCard(i).getRarity();
+			if(main.playerDeck.getCard(i).getShowBack()) {
+				bbg.drawImage(backCard, 215 + (95*i), 647, this);
+			} else {
+				switch(rarity) {
+				case 0:		bbg.drawImage(commonCard, 215 + (95*i), 647, this);
+							break;
+				case 1:		bbg.drawImage(uncommonCard, 215 + (95*i), 647, this);
+							break;
+				case 2: 	bbg.drawImage(rareCard, 215 + (95*i), 647, this);
+							break;
+				case 3:		bbg.drawImage(godlyCard, 215 + (95*i), 647, this);
+							break;
+				case 4:		bbg.drawImage(legendaryCard, 215 + (95*i), 647, this);
+							break;
+				}	
+			}
+		}
 		g.drawImage(backBuffer, insets.left, insets.top, this);
 	}
 	
@@ -99,7 +126,12 @@ public class DrawHandler extends JFrame implements Runnable {
 	private void imageLoader(){
 		try{
 			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_layout.png"));
-			
+			backCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Back.png"));
+			commonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Common.png"));
+			uncommonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Uncommon.png"));
+			rareCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Rare.png"));
+			legendaryCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Legendary.png"));
+			godlyCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Godly.png"));
 		}catch(IOException e){
 			
 		}

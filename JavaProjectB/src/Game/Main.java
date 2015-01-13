@@ -10,8 +10,8 @@ import java.awt.event.MouseListener;
 public class Main implements MouseListener{
 	private int fps = 60;
 	private boolean isRunning = true;
-	private static Deck playerDeck = null;
-	private static Deck enemyDeck = null;
+	public static Deck playerDeck = null;
+	public static Deck enemyDeck = null;
 	/*
 	 * arrays for the mouse hover and click-boxes
 	 */
@@ -63,21 +63,21 @@ public class Main implements MouseListener{
 	}
 
 	void update() {
-		int arrayListSize = Deck.inHandPlayer.size();
+		int arrayListSize = playerDeck.inHand.size();
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
 			inHandBoxes[i][0] = 1;
 		}
 		for (int i = 0 ; i < 9 - arrayListSize && arrayListSize != 0; i++){
 			inHandBoxes[i][0] = 0;
 		}
-		arrayListSize = Deck.onTablePlayer.size();
+		arrayListSize = playerDeck.onTable.size();
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
 			playerOnTableBoxes[i][0] = 1;
 		}
 		for (int i = 0 ; i < 9 - arrayListSize && arrayListSize != 0; i++){
 			playerOnTableBoxes[i][0] = 0;
 		}
-		arrayListSize = Deck.onSpellsPlayer.size();
+		arrayListSize = playerDeck.onSpells.size();
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
 			playerOnSpellsBoxes[i][0] = 1;
 		}

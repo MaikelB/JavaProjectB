@@ -8,21 +8,42 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
+/**
+ * Drawhandler handles all the draws on screen. Implements Runnable for an executable thread.
+ *
+ */
 public class DrawHandler extends JFrame implements Runnable {
-
+	
 	private static final long serialVersionUID = 1L;
+	
+	/** Boolean isRunning = if true, game will be running */
 	private boolean isRunning = true;
+	
+	/** int fps = holds the value of the frames per seconds */
 	private int fps = 60;
+	
+	/** int windowWidth = holds the value of the width of the frame */
 	private int windowWidth = 1280;
+	
+	/** int windowHeight = holds the value of the height of the frame */ 
 	private int windowHeight = 720;
+	
+	/** Insets insets = Keeps the screen in the right resolution */
 	private Insets insets;
+	
+	/** String gameTitle = Show the title of the game */
 	private String gameTitle = "Test Title";
+	
+	/** BufferedImage backBuffer = Holds all the drawn objects before they are drawn on the screen */
 	private BufferedImage backBuffer;
+	
+	/** Main main = holds the thread of main */
 	Main main;
 	
+	/** BufferedImage playField = Hold the background image */
 	private BufferedImage playField = null;
 
+	/** void run() = Initialize, set thread sleep time(1000ms / frames per second), and run the game */
 	public void run() {
 		initialize();
 		while (isRunning) {
@@ -40,7 +61,8 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		setVisible(false);
 	}
-
+	
+	/** void initialize() = sets the game variables (title, insets, size, backbuffer, main, images) */
 	void initialize() {
 		setTitle(gameTitle);
 		setResizable(false);
@@ -55,7 +77,8 @@ public class DrawHandler extends JFrame implements Runnable {
 		imageLoader();
 
 	}
-
+	
+	/** void draw() = Draws all non-static objects */
 	void draw() {
 		Graphics g = getGraphics();
 
@@ -71,6 +94,8 @@ public class DrawHandler extends JFrame implements Runnable {
 
 		g.drawImage(backBuffer, insets.left, insets.top, this);
 	}
+	
+	/** void imageLoader() = Sets all image variables to a working image */
 	private void imageLoader(){
 		try{
 			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_layout.png"));

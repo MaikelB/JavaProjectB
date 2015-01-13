@@ -99,6 +99,9 @@ public class DrawHandler extends JFrame implements Runnable {
 		bbg.setColor(Color.RED);
 		
 		int arraySize = main.playerDeck.inHand.size();
+		if(main.playerDeck.deck.size() != 0) {
+			bbg.drawImage(backCard, 1137, 563, this);
+		}
 		
 		for(int i = 0; i < arraySize; i++) {
 			int rarity = main.playerDeck.getCard(i).getRarity();

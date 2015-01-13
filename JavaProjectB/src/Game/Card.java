@@ -10,6 +10,8 @@ public class Card {
 	@SuppressWarnings("unused")
 	private String card_desc; 
 	
+	private Boolean showBack = true;
+	
 	/** int special = holds the special of the card in number format 
 	 * 0 = nothing
 	 * 1 = spell power = 10 mana
@@ -27,11 +29,11 @@ public class Card {
 	private int[] card_stats; 
 	
 	/** int rarity = holds the rarity number of the card. numbers are below from worst to best
-	 * 1 = common (white) 5
-	 * 2 = uncommon (blue) 10 mana
-	 * 3 = rare (purple) = 15 mana
-	 * 4 = legendary (gold) = 20 mana
-	 * 5 = GOD-LIKE (pink) = 30 mana
+	 * 0 = common (white) 5
+	 * 1 = uncommon (blue) 10 mana
+	 * 2 = rare (purple) = 15 mana
+	 * 3 = legendary (gold) = 20 mana
+	 * 4 = GOD-LIKE (pink) = 30 mana
 	 */
 	private int rarity;
 	
@@ -115,5 +117,9 @@ public class Card {
 	 */
 	public void debuffDefense(int def) {
 		card_stats[1] -= def;
-	}	
+	}
+
+	public Boolean getShowBack() {
+		return showBack;
+	}
 }

@@ -62,10 +62,87 @@ Please be careful with changing this file.
 		Card_rarity = 2
 	}
 	{
-		Card_name = 
-		Card_description =
-		Card_stats = 
-		Card_special = 
-		Card_rarity = 
+		Card_name = Prism Blast
+		Card_description = Once the light hits the prism it splits into infinite colours.
+		Card_stats = 7 : 1
+		Card_special = 4
+		Card_rarity = 3
+	}
+	{
+		Card_name = Enlightenment
+		Card_description = Take the word literally and the sun blasts its ray to one location, enlightening all in its radius.
+		Card_stats = 5 : 1
+		Card_special = 4
+		Card_rarity = 2
+	}
+	{
+		Card_name = True Excalibur
+		Card_description = The sword of legends must not be trifled with by mortals.
+		Card_stats = 6 : 1
+		Card_special = 2
+		Card_rarity = 3
+	}
+	{
+		Card_name = Soldier of Light
+		Card_description = These soldiers are considered the fodder of the battlefield.
+		Card_stats = 2 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Soldier of Light
+		Card_description = These soldiers are considered the fodder of the battlefield.
+		Card_stats = 2 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Soldier of Light
+		Card_description = These soldiers are considered the fodder of the battlefield.
+		Card_stats = 2 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Unstable Singularity
+		Card_description = Being unstable is not really proficient during battle.
+		Card_stats = 3 : 1
+		Card_special = 5
+		Card_rarity = 0
+	}
+	{
+		Card_name = Unstable Singularity
+		Card_description = Being unstable is not really proficient during battle.
+		Card_stats = 3 : 1
+		Card_special = 5
+		Card_rarity = 0
+	}
+	{
+		Card_name = Unstable Singularity
+		Card_description = Being unstable is not really proficient during battle.
+		Card_stats = 3 : 1
+		Card_special = 5
+		Card_rarity = 0
+	}
+	{
+		Card_name = Stable Singularity
+		Card_description = Stronger than his unstable brother, and less annoying.
+		Card_stats = 4 : 1
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Stable Singularity
+		Card_description = Stronger than his unstable brother, and less annoying.
+		Card_stats = 4 : 1
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Visible Ray
+		Card_description = This Ray is so strong that it is visible to the naked eye.
+		Card_stats = 5 : 1
+		Card_special = 4
+		Card_rarity = 2
 	}
 }

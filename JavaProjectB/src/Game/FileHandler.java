@@ -11,7 +11,7 @@ public class FileHandler {
 	private String dn, dc, cn, cd;
 	private int spec, rar;
 	private int[] st;
-	private boolean search = true;
+	private boolean searchd = true, searchc = false, reader = true;
 
 	public FileHandler(){
 		decks.add(deck1);
@@ -25,112 +25,122 @@ public class FileHandler {
 					BufferedReader br = new BufferedReader(f);
 					Scanner sc = new Scanner(read);
 					sc.useDelimiter("\\s = \\s|\\s : \\s");
-					while(true){
-						if (br.readLine() == "{"){
+					while(reader){
+						while(searchd){
 							read = br.readLine();
 							if (sc.next() =="Deck_name"){
 								dn = sc.next();
 							}
 							else if (sc.next() == "Deck_description"){
 								dc = sc.next();
-							}
-							else if (br.readLine() == "}"){
-								Deck a = new Deck(dn, dc);
-								Main.setPlayerDeck(a);
-							}
-							else {read = br.readLine();}	
-						}
-						else if (br.readLine() =="\t{"){
-							br.readLine();
-							if (sc.next() == "Card_name"){	
-								cn = sc.next();
-							}
-							else if (sc.next() == "Card_description"){
-								cd = sc.next();
 							}	
-							else if(sc.next() == "Card_stats"){
-								st[0] = sc.nextInt();
-								st[1] = sc.nextInt();
+							else if (br.readLine()== "\t{"){
+								searchc = true;
+								break;
 							}
-							else if(sc.next() == "Card_special"){
-								spec = sc.nextInt();							
-							}
-							else if (sc.next() == "Card_rarity"){
-								rar = sc.nextInt();
-							}
-							else if (br.readLine() == "\t}"){
-								Card a = new Card(cn, cd, spec, st, rar);
-								Deck.setCard(a);
-							}
-							else {br.readLine();}
+							else br.readLine();
 						}
-						else if (br.readLine() == "}"){
-							break;
-						}
-						else {
-							br.readLine();
+						if (br.readLine() =="\t{"){
+							searchc = true;
+							while (searchc){
+								read = br.readLine();
+								if (sc.next() == "Card_name"){	
+									cn = sc.next();
+								}
+								if (sc.next() == "Card_description"){
+									cd = sc.next();
+								}
+								if(sc.next() == "Card_stats"){
+									st[0] = sc.nextInt();
+									st[1] = sc.nextInt();
+								}
+								if(sc.next() == "Card_special"){
+									spec = sc.nextInt();							
+								}
+								if (sc.next() == "Card_rarity"){
+									rar = sc.nextInt();}
+
+								if (br.readLine() == "\t}"){
+									Card a = new Card(cn, cd, spec, st, rar);
+									Deck.setCard(a);
+								}
+								else if (br.readLine() == "}"){
+									Deck a = new Deck(dn, dc);
+									Main.setPlayerDeck(a);
+									reader = false;
+									sc.close();
+									br.close();
+									f.close();
+									break;
+								}
+							}
 						}
 					}
-					sc.close();	
 				}
-			}
+			}	
 		}
-		else {
+		else{
 			for (String[] s : decks){
 				if (s[0].equals(deckName)){
+					String read = null;
 					FileReader f = new FileReader(s[1]);
 					BufferedReader br = new BufferedReader(f);
-					Scanner sc = new Scanner(f);
+					Scanner sc = new Scanner(read);
 					sc.useDelimiter("\\s = \\s|\\s : \\s");
-					while(true){
-						if (br.readLine() == "{"){
-							br.readLine();
+					while(reader){
+						while(searchd){
+							read = br.readLine();
 							if (sc.next() =="Deck_name"){
 								dn = sc.next();
 							}
 							else if (sc.next() == "Deck_description"){
 								dc = sc.next();
-							}
-							else if (br.readLine() == "}"){
-								Deck a = new Deck(dn, dc);
-								Main.setEnemyDeck(a);
-							}
-							else {br.readLine();}	
-						}
-						else if (br.readLine() =="\t{"){
-							br.readLine();
-							if (sc.next() == "Card_name"){	
-								cn = sc.next();
-							}
-							else if (sc.next() == "Card_description"){
-								cd = sc.next();
 							}	
-							else if(sc.next() == "Card_stats"){
-								st[0] = sc.nextInt();
-								st[1] = sc.nextInt();
+							else if (br.readLine()== "\t{"){
+								searchc = true;
+								break;
 							}
-							else if(sc.next() == "Card_special"){
-								spec = sc.nextInt();							
-							}
-							else if (sc.next() == "Card_rarity"){
-								rar = sc.nextInt();
-							}
-							else if (br.readLine() == "\t}"){
-								Card a = new Card(cn, cd, spec, st, rar);
-								Deck.setCard(a);
-							}
-							else {br.readLine();}
+							else br.readLine();
 						}
-						else if (br.readLine() == "}"){
-							break;
-						}
-						else {
-							br.readLine();
+						if (br.readLine() =="\t{"){
+							searchc = true;
+							while (searchc){
+								read = br.readLine();
+								if (sc.next() == "Card_name"){	
+									cn = sc.next();
+								}
+								if (sc.next() == "Card_description"){
+									cd = sc.next();
+								}
+								if(sc.next() == "Card_stats"){
+									st[0] = sc.nextInt();
+									st[1] = sc.nextInt();
+								}
+								if(sc.next() == "Card_special"){
+									spec = sc.nextInt();							
+								}
+								if (sc.next() == "Card_rarity"){
+									rar = sc.nextInt();}
+
+								if (br.readLine() == "\t}"){
+									Card a = new Card(cn, cd, spec, st, rar);
+									Deck.setCard(a);
+								}
+								else if (br.readLine() == "}"){
+									Deck a = new Deck(dn, dc);
+									Main.setEnemyDeck(a);
+									reader = false;
+									sc.close();
+									br.close();
+									f.close();
+									break;
+								}
+								
+							}
 						}
 					}
-					sc.close();	
 				}
-			}
+			}	
 		}
 	}
 }

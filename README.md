@@ -1,7 +1,7 @@
 # GETREKT420DECKIT
 
 GETREKT420DECKIT is an awesome creation of cards and decks all wrapped up in a game.
-We still don't know what the fuck is going on in the game, but what we DO know is that even though we have 3 days to make it, it will be awesome.
+We still don't know what the fuck is going on in the game, but what we DO know is that even though we had 3 days to make it, it will be awesome.
 
 ##Installation
 Download and play that shit. It's free, so **blaze away**!

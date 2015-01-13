@@ -83,26 +83,12 @@ public class DrawHandler extends JFrame implements Runnable {
 		imageLoader();
 
 	}
-	
-	/** void draw() = Draws all non-static objects */
-	void draw() {
-		Graphics g = getGraphics();
-
-		Graphics bbg = backBuffer.getGraphics();
-
-		bbg.setColor(Color.WHITE);
-		bbg.fillRect(0, 0, windowWidth, windowHeight);
-
-		bbg.setColor(Color.BLACK);
-		bbg.drawImage(playField, 0, 0, this);
-
-		bbg.setColor(Color.RED);
+	private BufferedImage drawPlayerHand() {
+		BufferedImage backBufferHand = new BufferedImage(windowWidth, windowHeight,
+				+BufferedImage.TYPE_INT_RGB);
 		
+		Graphics bbg = backBufferHand.getGraphics();
 		int arraySize = main.playerDeck.inHand.size();
-		if(main.playerDeck.deck.size() != 0) {
-			bbg.drawImage(backCard, 1137, 563, this);
-		}
-		
 		for(int i = 0; i < arraySize; i++) {
 			int rarity = main.playerDeck.getCard(i).getRarity();
 			if(main.playerDeck.getCard(i).getShowBack()) {
@@ -119,9 +105,29 @@ public class DrawHandler extends JFrame implements Runnable {
 							break;
 				case 4:		bbg.drawImage(legendaryCard, 215 + (95*i), 647, this);
 							break;
-				}	
+			}	
 			}
 		}
+		return backBufferHand;
+	}
+	/** void draw() = Draws all non-static objects */
+	void draw() {
+		Graphics g = getGraphics();
+
+		Graphics bbg = backBuffer.getGraphics();
+
+		bbg.setColor(Color.WHITE);
+		bbg.fillRect(0, 0, windowWidth, windowHeight);
+
+		bbg.setColor(Color.BLACK);
+		bbg.drawImage(playField, 0, 0, this);
+		bbg.drawImage(drawPlayerHand(), 0,0, this);
+		bbg.setColor(Color.RED);
+		//drawRemainingDeck
+		if(main.playerDeck.deck.size() != 0) {
+			bbg.drawImage(backCard, 1137, 563, this);
+		}
+				
 		g.drawImage(backBuffer, insets.left, insets.top, this);
 	}
 	

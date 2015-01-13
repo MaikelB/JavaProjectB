@@ -1,0 +1,71 @@
+This file contains the information for deck 2.
+Please be careful with changing this file.
+
+{
+	Deck_name = Blazing Light
+	Deck_description = Harnessing the power of Light these creatures really pack a punch
+
+	{
+		Card_name = Justicar
+		Card_description = The Justicar lives to defend its allies
+		Card_stats = 1 : 6
+		Card_special = 2
+		Card_rarity = 2
+	}
+	{
+		Card_name = Justicar
+		Card_description = The Justicar lives to defend its allies.
+		Card_stats = 1 : 6
+		Card_special = 2
+		Card_rarity = 2
+	}
+	{
+		Card_name = Whisp
+		Card_description = Get too close and get zapped.
+		Card_stats = 4 : 1
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Whisp
+		Card_description = Get too close and get zapped.
+		Card_stats = 4 : 1
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Whisp
+		Card_description = Get too close and get zapped.
+		Card_stats = 4 : 1
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Eye of Osiris
+		Card_description = The living incarnation of Osiris is not to be made fun of.
+		Card_stats = 8 : 3
+		Card_special = 3
+		Card_rarity = 4
+	}
+	{
+		Card_name = Angel
+		Card_description = Creatures of the heavens, extensively trained in combat to counter the demon rise.
+		Card_stats = 5 : 1
+		Card_special = 0
+		Card_rarity = 2
+	}
+	{
+		Card_name = Angel
+		Card_description = Creatures of the heavens, extensively trained in combat to counter the demon rise.
+		Card_stats = 5 : 1
+		Card_special = 0
+		Card_rarity = 2
+	}
+	{
+		Card_name = 
+		Card_description =
+		Card_stats = 
+		Card_special = 
+		Card_rarity = 
+	}
+}

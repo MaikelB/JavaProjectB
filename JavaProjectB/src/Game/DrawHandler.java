@@ -17,6 +17,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	private Insets insets;
 	private String gameTitle = "Test Title";
 	private BufferedImage backBuffer;
+	Main main;
 
 	public void run() {
 		initialize();
@@ -46,6 +47,7 @@ public class DrawHandler extends JFrame implements Runnable {
 				+ windowHeight + insets.bottom);
 		backBuffer = new BufferedImage(windowWidth, windowHeight,
 				+BufferedImage.TYPE_INT_RGB);
+		main = new Main(this);
 
 	}
 

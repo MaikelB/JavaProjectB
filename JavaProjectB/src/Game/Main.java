@@ -5,8 +5,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 
+
+
 public class Main implements MouseListener{
-	private int fps = 10;
+	private int fps = 60;
 	private boolean isRunning = true;
 	
 	/*
@@ -60,7 +62,30 @@ public class Main implements MouseListener{
 	}
 
 	void update() {
-
+		int arrayListSize = Deck.inHandPlayer.size();
+		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
+			inHandBoxes[i][0] = 1;
+		}
+		for (int i = 0 ; i < 9 - arrayListSize && arrayListSize != 0; i++){
+			inHandBoxes[i][0] = 0;
+		}
+		arrayListSize = Deck.onTablePlayer.size();
+		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
+			playerOnTableBoxes[i][0] = 1;
+		}
+		for (int i = 0 ; i < 9 - arrayListSize && arrayListSize != 0; i++){
+			playerOnTableBoxes[i][0] = 0;
+		}
+		arrayListSize = Deck.onSpellsPlayer.size();
+		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
+			playerOnSpellsBoxes[i][0] = 1;
+		}
+		for (int i = 0 ; i < 2 - arrayListSize && arrayListSize != 0; i++){
+			playerOnSpellsBoxes[i][0] = 0;
+		}
+	}
+	private void buttonClickBoxes(int x, int y){
+		
 	}
 	private void clickBoxes(int x, int y){
 		System.out.println(x + " - " + y);
@@ -72,8 +97,25 @@ public class Main implements MouseListener{
 		}
 		//onTable player
 		for(int i = 0; i < 9; i++){
-			
+			if (x > 220 + 95*i && x < 310 + 95*i && y > 380 && y < 520 && playerOnTableBoxes[i][0] == 1){
+				System.out.println("player onTablebox: " + i);
+			}
 		}
+		//onTable enemy
+		for(int i = 0; i < 9; i++){
+			if (x > 220 + 95*i && x < 310 + 95*i && y > 200 && y < 340 && enemyOnTableBoxes[i][0] == 1){
+				System.out.println("enemy onTablebox: " + i);
+			}
+		}
+		//onSpells player
+		for(int i = 0; i < 2; i++){
+			if (x > 20 + 95*i && x < 110 + 95*i && y > 380 && y < 520 && playerOnSpellsBoxes[i][0] == 1){
+				System.out.println("player onSpells: " + i);
+			}
+		}
+		//Buttons
+		buttonClickBoxes(x, y);
+		//heros -- TODO write hero click boxes
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

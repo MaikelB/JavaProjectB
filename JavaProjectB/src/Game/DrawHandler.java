@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class DrawHandler extends JFrame implements Runnable {
@@ -18,6 +20,8 @@ public class DrawHandler extends JFrame implements Runnable {
 	private String gameTitle = "Test Title";
 	private BufferedImage backBuffer;
 	Main main;
+	
+	private BufferedImage playField = null;
 
 	public void run() {
 		initialize();
@@ -48,6 +52,7 @@ public class DrawHandler extends JFrame implements Runnable {
 		backBuffer = new BufferedImage(windowWidth, windowHeight,
 				+BufferedImage.TYPE_INT_RGB);
 		main = new Main(this);
+		imageLoader();
 
 	}
 
@@ -60,10 +65,18 @@ public class DrawHandler extends JFrame implements Runnable {
 		bbg.fillRect(0, 0, windowWidth, windowHeight);
 
 		bbg.setColor(Color.BLACK);
-		bbg.drawRect(windowWidth/2, windowHeight/2, 5, 5);
+		bbg.drawImage(playField, 0, 0, this);
 
 		bbg.setColor(Color.RED);
 
 		g.drawImage(backBuffer, insets.left, insets.top, this);
+	}
+	private void imageLoader(){
+		try{
+			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_layout.png"));
+			
+		}catch(IOException e){
+			
+		}
 	}
 }

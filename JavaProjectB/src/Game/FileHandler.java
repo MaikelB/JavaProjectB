@@ -8,7 +8,10 @@ import java.util.Scanner;
 public class FileHandler {
 	private List<String[]> decks = new ArrayList<String[]>();
 	private String[] deck1 = { "deck1", "Decks\\Deck1.data"};
-	
+	private String dn, dc, cn, cd;
+	private int spec, rar;
+	private int[] st;
+
 	public FileHandler(){
 		decks.add(deck1);
 	}
@@ -23,30 +26,30 @@ public class FileHandler {
 					if (br.readLine() == "{"){
 						br.readLine();
 						if (sc.next() =="Deck_name"){
-							String dn = sc.next();
+							dn = sc.next();
 						}
 						else if (sc.next() == "Deck_description"){
-							String dc = sc.next();
+							dc = sc.next();
 						}
-						else {br.readLine();}			
+						else {br.readLine();}	
 					}
 					else if (br.readLine() =="	{"){
 						br.readLine();
 						if (sc.next() == "Card_name"){	
-							String cn = sc.next();
+							cn = sc.next();
 						}
 						else if (sc.next() == "Card_description"){
-							String cd = sc.next();
-						}
+							cd = sc.next();
+						}	
 						else if(sc.next() == "Card_stats"){
-							int at = sc.nextInt();
-							int def = sc.nextInt();
+							st[0] = sc.nextInt();
+							st[1] = sc.nextInt();
 						}
 						else if(sc.next() == "Card_special"){
-							int spec = sc.nextInt();							
+							spec = sc.nextInt();							
 						}
 						else if (sc.next() == "Card_rarity"){
-							int rar = sc.nextInt();
+							rar = sc.nextInt();
 						}
 						else {br.readLine();}
 					}
@@ -57,8 +60,7 @@ public class FileHandler {
 						br.readLine();
 					}
 				}
-				sc.close();
-				
+				sc.close();	
 			}
 		}
 	}

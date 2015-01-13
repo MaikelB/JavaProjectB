@@ -3,13 +3,146 @@ Please be careful with changing this file.
 
 {
 	Deck_name = Guardian Earth
-	Deck_description = ---
+	Deck_description = Most creatures in this deck put focus on Defense, using the earth to enhance their natural strength and resilience
 	
 	{
-		Card_name = ---
-		Card_description = ---
-		Card_stats = --- : ---
-		Card_special = ---
-		Card_rarity = ---
+		Card_name = Straw Golem
+		Card_description = Small straw creature imbued with the life force of Gaia, mostly used for farming.
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Straw Golem
+		Card_description = Small straw creature imbued with the life force of Gaia, mostly used for farming.
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Straw Golem
+		Card_description = Small straw creature imbued with the life force of Gaia, mostly used for farming.
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Ent Ancient
+		Card_description = A creature resembling a tree. Having life-force to last several ages.
+		Card_stats = 2 : 2
+		Card_special = 2
+		Card_rarity = 2
+	}
+	{
+		Card_name = Ent Ancient
+		Card_description = A creature resembling a tree. Having life-force to last several ages.
+		Card_stats = 2 : 2
+		Card_special = 2
+		Card_rarity = 2
+	}
+	{
+		Card_name = Bramble Thorns
+		Card_description = Annoying Thorns that capture any unfortunate enough to walk near them
+		Card_stats = 1 : 3
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Cronos
+		Card_description = The terrifying Titan Cronos is the first Creation of Tartarus. Being several hundred feet tall he is a force to be reckoned with.
+		Card_stats = 5 : 9
+		Card_special = 2
+		Card_rarity = 4
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}	Card_rarity =
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
+	}
+	{
+		Card_name = Test
+		Card_description = Test
+		Card_stats = 0 : 1
+		Card_special = 0
+		Card_rarity = 0
 	}
 }

@@ -10,7 +10,8 @@ import java.awt.event.MouseListener;
 public class Main implements MouseListener{
 	private int fps = 60;
 	private boolean isRunning = true;
-	
+	private static Deck playerDeck = null;
+	private static Deck enemyDeck = null;
 	/*
 	 * arrays for the mouse hover and click-boxes
 	 */
@@ -141,6 +142,12 @@ public class Main implements MouseListener{
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	public static void setPlayerDeck(Deck a){
+		playerDeck = a;
+	}
+	public static void setEnemyDeck(Deck a){
+		enemyDeck = a;
 	}
 
 }

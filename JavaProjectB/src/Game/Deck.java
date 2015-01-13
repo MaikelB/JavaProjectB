@@ -66,8 +66,7 @@ public class Deck {
 	/** boolean setCard( Card to add to the deck )
 	 * adds #c card to the deck
 	 */
-	public boolean setCard( Card c ){
-		deck.add(c);
+	public static boolean setCard( Card c ){
 		return false;
 	}
 	

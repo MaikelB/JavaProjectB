@@ -5,25 +5,25 @@ import java.util.ArrayList;
 public class Deck {
 	
 	/** String deck_name = holds the name of the deck */
-	private String deck_namePlayer;
+	private String deck_name;
 	
 	/**String deck_desc = holds the description of the deck */
-	private String deck_descPlayer;
+	private String deck_desc;
 	
 	/** ArrayList<Card> deck = holds the cards still in your deck */
-	static public ArrayList<Card> deckPlayer = new ArrayList<Card>();
+	static public ArrayList<Card> deck = new ArrayList<Card>();
 	
 	/** ArrayList<Card> graveyard = holds the cards that died */
-	static public ArrayList<Card> graveyardPlayer = new ArrayList<Card>();
+	static public ArrayList<Card> graveyard = new ArrayList<Card>();
 	
 	/** ArrayList<Card> onTable = holds the cards on the table */
-	static public ArrayList<Card> onTablePlayer = new ArrayList<Card>();
+	static public ArrayList<Card> onTable = new ArrayList<Card>();
 	
 	/** ArrayList<Card> onSpells = holds the spells on the table */
-	static public ArrayList<Card> onSpellsPlayer = new ArrayList<Card>();
+	static public ArrayList<Card> onSpells = new ArrayList<Card>();
 	
 	/** ArrayList<Card> inHand = holds the cards/spells currently in your hand */
-	static public ArrayList<Card> inHandPlayer = new ArrayList<Card>();
+	static public ArrayList<Card> inHand = new ArrayList<Card>();
 	
 	/** Deck( name of the deck, description of the deck ) */
 	public Deck(String nm, String desc){

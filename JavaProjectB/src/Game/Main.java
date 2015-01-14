@@ -130,31 +130,52 @@ public class Main implements MouseListener{
 		for(int i =0 ; i < 9 ; i++){
 			if (x > 215 + 95*i && x < 305 + 95*i && y > 674 && inHandBoxes[i][0] == 1){
 				System.out.println("inhandbox: " + i);
-				clearSelected();
-				inHandBoxes[i][1] = 1;				
+				if(inHandBoxes[i][1]==1) {
+					inHandBoxes[i][1] = 0;
+				} else {
+					clearSelected();
+					inHandBoxes[i][1] = 1;
+				}
+				
+							
 			}
 		}
 		//onTable player
 		for(int i = 0; i < 9; i++){
 			if (x > 220 + 95*i && x < 310 + 95*i && y > 380 && y < 520 && playerOnTableBoxes[i][0] == 1){
 				System.out.println("player onTablebox: " + i);
-				clearSelected();
-				playerOnTableBoxes[i][1] = 1;	
+				
+				if(playerOnTableBoxes[i][1]==1) {
+					playerOnTableBoxes[i][1] = 0;
+				} else {
+					clearSelected();
+					playerOnTableBoxes[i][1] = 1;	
+				}
+				
 			}
 		}
 		//onTable enemy
 		for(int i = 0; i < 9; i++){
 			if (x > 220 + 95*i && x < 310 + 95*i && y > 200 && y < 340 && enemyOnTableBoxes[i][0] == 1){
 				System.out.println("enemy onTablebox: " + i);
-				enemyOnTableBoxes[i][1] = 1;	
+				if(enemyOnTableBoxes[i][1]==1) {
+					enemyOnTableBoxes[i][1] = 0;
+				} else {
+					enemyOnTableBoxes[i][1] = 1;	
+				}
 			}
 		}
 		//onSpells player
 		for(int i = 0; i < 2; i++){
 			if (x > 20 + 95*i && x < 110 + 95*i && y > 380 && y < 520 && playerOnSpellsBoxes[i][0] == 1){
 				System.out.println("player onSpells: " + i);
-				clearSelected();
-				playerOnSpellsBoxes[i][1] = 1;	
+				if(playerOnSpellsBoxes[i][1]==1) {
+					playerOnSpellsBoxes[i][1] = 0;
+				} else {
+					clearSelected();
+					playerOnSpellsBoxes[i][1] = 1;	
+				}
+				
 			}
 		}
 		//Buttons

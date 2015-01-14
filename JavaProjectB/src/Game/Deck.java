@@ -5,27 +5,27 @@ import java.util.ArrayList;
 public class Deck {
 	
 	/** String deck_name = holds the name of the deck */
-	private String deck_name;
+	public String deck_name;
 	
 	/**String deck_desc = holds the description of the deck */
 	private String deck_desc;
 	
-	static public ArrayList<Card> notPlayable = new ArrayList<Card>();
+	public ArrayList<Card> notPlayable = new ArrayList<Card>();
 	
 	/** ArrayList<Card> deck = holds the cards still in your deck */
-	static public ArrayList<Card> deck = new ArrayList<Card>();
+	public ArrayList<Card> deck = new ArrayList<Card>();
 	
 	/** ArrayList<Card> graveyard = holds the cards that died */
-	static public ArrayList<Card> graveyard = new ArrayList<Card>();
+	public ArrayList<Card> graveyard = new ArrayList<Card>();
 	
 	/** ArrayList<Card> onTable = holds the cards on the table */
-	static public ArrayList<Card> onTable = new ArrayList<Card>();
+	public ArrayList<Card> onTable = new ArrayList<Card>();
 	
 	/** ArrayList<Card> onSpells = holds the spells on the table */
-	static public ArrayList<Card> onSpells = new ArrayList<Card>();
+	public ArrayList<Card> onSpells = new ArrayList<Card>();
 	
 	/** ArrayList<Card> inHand = holds the cards/spells currently in your hand */
-	static public ArrayList<Card> inHand = new ArrayList<Card>();
+	public ArrayList<Card> inHand = new ArrayList<Card>();
 	
 	/** Deck( name of the deck, description of the deck ) */
 	public Deck(String nm, String desc){
@@ -79,7 +79,6 @@ public class Deck {
 	}
 	public void drawCard(){
 		int randomNum = 1 + (int)(Math.random()*deck.size());
-		System.out.println(deck.size());
 		Card draw = deck.get(randomNum - 1);
 		if(draw.equals(Main.playerDeck.getCard(randomNum-1))){
 			draw.setShowBack(false);

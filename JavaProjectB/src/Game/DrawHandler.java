@@ -144,6 +144,8 @@ public class DrawHandler extends JFrame implements Runnable {
 		
 		
 		//cards
+		int arraySize;
+		
 		//enemy deck
 		if(main.enemyDeck.deck.size() != 0) {
 			bbg.drawImage(backCard, 50, 20, this);
@@ -153,7 +155,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			bbg.drawImage(backCard, 1146, 560, this);
 		}
 		// emeny deck
-		int arraySize = main.enemyDeck.inHand.size();
+		arraySize = main.enemyDeck.inHand.size();
 		for(int i = 0; i < arraySize; i++) {
 				bbg.drawImage(backCard, 215 + (95*i), -94 , this);
 			

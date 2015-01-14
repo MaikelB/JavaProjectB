@@ -55,6 +55,7 @@ public class FileHandler {
 							sc.close();
 						}
 						Deck b = new Deck(dn, dc);
+						
 						Main.setPlayerDeck(b);
 						
 						while (searchc) {
@@ -90,10 +91,12 @@ public class FileHandler {
 			}
 		}
 		else{
+			reader = true;
+			searchd = true;
 			for (int i = 0; i < decks.size(); i++) {
 				String[] s = decks.get(i);
 				if (s[0].equals(deckName)) {
-
+					
 					FileReader f = new FileReader(s[1]);
 					BufferedReader br = new BufferedReader(f);
 
@@ -118,6 +121,7 @@ public class FileHandler {
 							}
 							sc.close();
 						}
+						System.out.println("testing2: " + dn + " - " + dc);
 						Deck b = new Deck(dn, dc);
 						Main.setEnemyDeck(b);
 						

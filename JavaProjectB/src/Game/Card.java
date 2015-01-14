@@ -10,7 +10,7 @@ public class Card {
 	@SuppressWarnings("unused")
 	private String card_desc; 
 	
-	static private Boolean showBack = true;
+	private Boolean showBack = true;
 	
 	/** int special = holds the special of the card in number format 
 	 * 0 = nothing
@@ -20,7 +20,7 @@ public class Card {
 	 * 4 = spell	 * 
 	 * 5 = taunt = 5 mana
 	 */
-	private static int special;
+	private int special;
 	
 	/** int[] card_stats = holds the attack and defense values
 	 * card_stats[0] = attack
@@ -35,7 +35,7 @@ public class Card {
 	 * 3 = legendary (gold) = 20 mana
 	 * 4 = GOD-LIKE (pink) = 30 mana
 	 */
-	static private int rarity;
+	private int rarity;
 	
 	
 	/** Card( Name, Description, Special ability number, Array with attack&defense ) */
@@ -50,7 +50,7 @@ public class Card {
 	/** getSpecial() returns an integer for what special the card has
 	 * if none, return null
 	 */
-	public static int getSpecial() {
+	public int getSpecial() {
 		switch(special) {
 		case 0:		System.out.println("Nothing");
 					break;

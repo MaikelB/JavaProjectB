@@ -35,6 +35,8 @@ public class Main implements MouseListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("testing: " + playerDeck.deck_name);
+		System.out.println("testing: " + enemyDeck.deck_name);
 		game.run();
 
 	}
@@ -288,6 +290,7 @@ public class Main implements MouseListener{
 		playerDeck = a;
 	}
 	public static void setEnemyDeck(Deck a){
+		System.out.println(a.deck_name);
 		enemyDeck = a;
 	}
 	public static boolean boardHasTaunt() {

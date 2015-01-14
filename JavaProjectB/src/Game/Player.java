@@ -17,6 +17,9 @@ public class Player {
 		if (mana >40){
 			mana = 40;
 		}
+		//if (next turn){
+		//mana = mana+10;
+		//}
 		return mana;
 	}
 

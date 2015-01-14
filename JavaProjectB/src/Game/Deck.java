@@ -89,4 +89,13 @@ public class Deck {
 		Card cardReturn = deck.get(i);
 		return cardReturn;
 	}
+	public Card getHandCard( int i ){
+		return inHand.get(i);
+	}
+	public Card getOnTable( int i){
+		return onTable.get(i);
+	}
+	public Card getOnSpells( int i){
+		return onSpells.get(i);
+	}
 }

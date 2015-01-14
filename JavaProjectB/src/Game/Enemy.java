@@ -23,8 +23,8 @@ public class Enemy {
 
 	static public void setMana(int ma){
 		mana = ma;
-		if (ma >40){
-			ma = 40;
+		if (mana >40){
+			mana = 40;
 		}
 	}
 	/** setHero = This uses Math.random to pick a random number between 1 and 3 and then puts it through the switch statement to

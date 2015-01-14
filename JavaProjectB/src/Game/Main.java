@@ -58,10 +58,6 @@ public class Main implements MouseListener {
 		playerDeck.drawCard();
 		playerDeck.drawCard();
 		playerDeck.drawCard();
-		playerDeck.drawCard();
-		playerDeck.drawCard();
-		playerDeck.drawCard();
-		enemyDeck.drawCard();
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
@@ -127,6 +123,15 @@ public class Main implements MouseListener {
 		}
 	}
 
+	private void pullCard() {
+		if(gameState == 1){
+			
+		}
+		if(gameState == 2){
+			
+		}
+	}
+	
 	private void playCard() {
 		for (int i = 0; i < playerDeck.inHand.size(); i++) {
 			if (inHandBoxes[i][1] == 1) {
@@ -219,6 +224,7 @@ public class Main implements MouseListener {
 	
 	public static void endEnemyTurn(){
 		gameState = 1;
+		Player.setMana(Player.getMana()+10);
 	}
 
 	private void buttonClickBoxes(int x, int y) {
@@ -250,6 +256,7 @@ public class Main implements MouseListener {
 
 	private void endTurn(){
 		gameState = 2;
+		Enemy.setMana(Enemy.getMana()+10);
 	}
 	
 	private void clearSelected() {

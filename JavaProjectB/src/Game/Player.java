@@ -37,7 +37,8 @@ public class Player {
 	 * sets mana of player.
 	 * if it goes above 40, it is set back to 40
 	 */
-	static public void setMana(){
+	static public void setMana(int ma){
+		mana = ma;
 		if (mana >40){
 			mana = 40;
 		}

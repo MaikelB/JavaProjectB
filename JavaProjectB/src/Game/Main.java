@@ -89,7 +89,7 @@ public class Main implements MouseListener{
 		}
 	}
 	private void playCard() {
-		for(int i = 0; i < inHandBoxes.length; i++) {
+		for(int i = 0; i < playerDeck.inHand.size(); i++) {
 			if(inHandBoxes[i][1]==1) {
 					if(playerDeck.getHandCard(i).getSpecial() == 2){
 						int tableSize = playerDeck.onTable.size();

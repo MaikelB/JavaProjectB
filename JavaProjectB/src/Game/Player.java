@@ -1,27 +1,27 @@
 package Game;
 
 public class Player {
-	private int health, mana;
+	private int health=20, mana=10;
 
 	public Player(int hp, int ma){
 		health = hp;
 		mana = ma;
 	}
 	
-	public int Health(){
-		health = 20;
-		return health;
+	public void setHealth(){
 	}
-	public int Mana(){
-		mana = 10;
-		if (mana >40){
+	public void setMana(){
+			if (mana >40){
 			mana = 40;
 		}
 		//if (next turn){
 		//mana = mana+10;
 		//}
+	}
+	public int getHealth(){
+		return health;
+	}
+	public int getMana(){
 		return mana;
 	}
-
-
 }

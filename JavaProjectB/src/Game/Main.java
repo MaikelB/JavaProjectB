@@ -91,11 +91,32 @@ public class Main implements MouseListener{
 	private void playCard( ) {
 		for(int i = 0; i < inHandBoxes.length; i++) {
 			if(inHandBoxes[i][1]==1) {
+					if(playerDeck.getHandCard(i).getSpecial() == 2){
+						int tableSize = playerDeck.onTable.size();
+						for(i = 0; i < tableSize; i++) {
+							playerDeck.onTable.get(i).buffDefense(1);
+						}
+					}
+					else if(playerDeck.getHandCard(i).getSpecial() == 3){
+						int tableSize = playerDeck.onTable.size();
+						for(i = 0; i < tableSize; i++) {
+							playerDeck.onTable.get(i).buffAttack(1);
+						}
+					}
+					else if(playerDeck.getHandCard(i).getSpecial() == 5){
+						int tableSize = playerDeck.onTable.size();
+						for(i = 0; i < tableSize; i++) {
+							if(playerDeck.onTable.get(i).getSpecial() == 5)
+								{
+									
+								}
+							}
+						}
+					}
 					playerDeck.cardPlay(i);
 					clearSelected();
 			}
 		}
-	}
 	private void buttonClickBoxes(int x, int y){
 		for( int i =0 ; i < DrawHandler.buttons.length; i++){
 			if(x > DrawHandler.buttons[i][0] && x< DrawHandler.buttons[i][0]+buttonSize[0] && y > DrawHandler.buttons[i][1] && y < DrawHandler.buttons[i][1]+ buttonSize[1] && DrawHandler.buttons[i][2] == 1 ){				
@@ -228,14 +249,14 @@ public class Main implements MouseListener{
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
 			playerOnTableBoxes[i][0] = 1;
 		}
-		for (int i = 0 ; i < 9 - arrayListSize && arrayListSize != 0; i++){
+		for (int i = arrayListSize ; i < 9; i++) {
 			playerOnTableBoxes[i][0] = 0;
 		}
 		arrayListSize = playerDeck.onSpells.size();
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
 			playerOnSpellsBoxes[i][0] = 1;
 		}
-		for (int i = 0 ; i < 2 - arrayListSize && arrayListSize != 0; i++){
+		for (int i = arrayListSize ; i < 9; i++) {
 			playerOnSpellsBoxes[i][0] = 0;
 		}
 		

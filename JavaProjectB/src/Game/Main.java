@@ -137,18 +137,23 @@ public class Main implements MouseListener{
 		for(int i = 0; i < 9; i++){
 			if (x > 220 + 95*i && x < 310 + 95*i && y > 380 && y < 520 && playerOnTableBoxes[i][0] == 1){
 				System.out.println("player onTablebox: " + i);
+				clearSelected();
+				playerOnTableBoxes[i][1] = 1;	
 			}
 		}
 		//onTable enemy
 		for(int i = 0; i < 9; i++){
 			if (x > 220 + 95*i && x < 310 + 95*i && y > 200 && y < 340 && enemyOnTableBoxes[i][0] == 1){
 				System.out.println("enemy onTablebox: " + i);
+				enemyOnTableBoxes[i][1] = 1;	
 			}
 		}
 		//onSpells player
 		for(int i = 0; i < 2; i++){
 			if (x > 20 + 95*i && x < 110 + 95*i && y > 380 && y < 520 && playerOnSpellsBoxes[i][0] == 1){
 				System.out.println("player onSpells: " + i);
+				clearSelected();
+				playerOnSpellsBoxes[i][1] = 1;	
 			}
 		}
 		//Buttons

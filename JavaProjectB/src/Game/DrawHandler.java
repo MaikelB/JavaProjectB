@@ -210,9 +210,10 @@ public class DrawHandler extends JFrame implements Runnable {
 					s2 = s1;
 					bbg.drawString(s2, 230+95*i , 217);
 				}
-				s1 = "" + Main.enemyDeck.getCard(i).card_stats[0];
-				System.out.println(Main.enemyDeck.getCard(i).card_stats[0]);
-				bbg.drawString(s1, 255 + (95*i), 295);
+				s1 = "" + Main.enemyDeck.getOnTable(i).getAttack();
+				bbg.drawString(s1, 250 + (95*i), 295);
+				s1 = "" + Main.enemyDeck.getOnTable(i).getDefense();
+				bbg.drawString(s1, 290 + (95*i), 295);
 			}
 		}
 		//enemy spells

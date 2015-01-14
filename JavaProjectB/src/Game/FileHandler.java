@@ -21,6 +21,7 @@ public class FileHandler {
 
 	public FileHandler() {
 		decks.add(deck1);
+		decks.add(deck2);
 	}
 
 	public static void loadDeck(String deckName, boolean player) throws IOException {

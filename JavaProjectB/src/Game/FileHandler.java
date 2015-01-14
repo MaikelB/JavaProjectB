@@ -10,6 +10,9 @@ public class FileHandler {
 	static private String[] deck1 = {
 			"deck1",
 			"src\\Game\\Decks\\Deck1.data" };
+	static private String[] deck2 = {
+			"deck2",
+			"src\\Game\\Decks\\Deck2.data"};
 	static private String dn, dc, cn, cd;
 	static private int spec, rar;
 	static private int[] st = new int[2];
@@ -31,24 +34,19 @@ public class FileHandler {
 
 					while (reader) {
 						while (searchd) {
-							System.out.println("test1");
 							read = br.readLine();
 							Scanner sc = new Scanner(read);
 							sc.useDelimiter("\\s=\\s|\\s:\\s");
 							if (sc.hasNext()) {
 
-								System.out.println("test 2");
 								String scanned = sc.next();
 								if (scanned.contains("Deck_name")) {
-									System.out.println("test  3");
 									dn = sc.next();
 									System.out.println(dn);
 								} else if (scanned.contains("Deck_description")) {
-									System.out.println("test    4");
 									dc = sc.next();
 									System.out.println(dc);
-								} else if (scanned.contains("{")) {
-									System.out.println("test       5");
+								} else if (scanned.contains("{")&& !scanned.contains(";{")) {
 									searchc = true;
 									searchd = false;
 								}

@@ -14,6 +14,7 @@ public class Main implements MouseListener{
 	public static Deck playerDeck = null;
 	public static Deck enemyDeck = null;
 	private int[] buttonSize = {100,40}; 
+	public static int gameState = 0;
 	/*
 	 * arrays for the mouse hover and click-boxes
 	 */
@@ -49,10 +50,7 @@ public class Main implements MouseListener{
 			inHandBoxes[i][1] = 0;
 			
 		}
-		playerDeck.drawCard();
-		playerDeck.drawCard();
-		playerDeck.drawCard();
-		
+	
 	}
 	
 	public void run() {
@@ -60,8 +58,8 @@ public class Main implements MouseListener{
 		initialize();
 		while (isRunning) {
 			long time = System.currentTimeMillis();
-
-			update();
+			//Main menu
+			update(gameState);
 
 			time = (1000 / fps) - (System.currentTimeMillis() - time);
 
@@ -74,7 +72,19 @@ public class Main implements MouseListener{
 		}
 	}
 
-	void update() {
+	void update(int gameS) {
+		if( gameS == 0){
+			
+		}
+		if( gameS == 1){
+			playerBoxes();
+			
+		}
+		if (gameS == 2){
+			
+		}
+		
+		
 		int arrayListSize = playerDeck.inHand.size();
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
 			inHandBoxes[i][0] = 1;

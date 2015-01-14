@@ -121,17 +121,6 @@ public class Main implements MouseListener{
 							playerDeck.onTable.get(b).buffAttack(1);
 						}
 					}
-					else if(playerDeck.getHandCard(i).getSpecial() == 5){
-						int tableSize = playerDeck.onTable.size();
-						for(int c = 0; c < tableSize; c++) {
-							if(playerDeck.onTable.get(c).getSpecial() != 5)
-							{
-								playerOnTableBoxes[c][0] = 0;
-							} else {
-								playerOnTableBoxes[c][0] = 1;
-							}
-						}
-					}
 					else if(playerDeck.getHandCard(i).getSpecial() == 4) {
 						int tableSize = playerDeck.onTable.size();
 						int extraAttack = 0;
@@ -267,8 +256,17 @@ public class Main implements MouseListener{
 	public static void setEnemyDeck(Deck a){
 		enemyDeck = a;
 	}
-
+	public static boolean boardHasTaunt() {
+		int arrayListSize = playerDeck.onTable.size();
+		for(int i = 0; i < arrayListSize; i++) {
+			if(playerDeck.onTable.get(i).getRarity() == 5) {
+				return true;
+			}
+		}
+		return false;
+	}
 	public static void playerBoxes() {
+		
 		int arrayListSize = playerDeck.inHand.size();
 		//System.out.println(arrayListSize);
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
@@ -278,9 +276,20 @@ public class Main implements MouseListener{
 			inHandBoxes[i][0] = 0;
 		}
 		arrayListSize = playerDeck.onTable.size();
-		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
-			playerOnTableBoxes[i][0] = 1;
+		if(!boardHasTaunt()){			
+			for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){				
+				playerOnTableBoxes[i][0] = 1;				
+			}
+		} else {
+			for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){	
+				if(playerDeck.onTable.get(i).getRarity() == 5) {
+					playerOnTableBoxes[i][0] = 1;
+				} else {
+					playerOnTableBoxes[i][0] = 0;
+				}						
+			}
 		}
+		
 		for (int i = arrayListSize ; i < 9; i++) {
 			playerOnTableBoxes[i][0] = 0;
 		}

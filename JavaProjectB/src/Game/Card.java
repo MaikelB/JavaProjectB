@@ -4,11 +4,11 @@ public class Card {
 	
 	/** String card_name = holds the name of the card */
 	@SuppressWarnings("unused")
-	private String card_name;
+	public String card_name;
 	
 	/** String card_desc = holds the information of the card in text format */
 	@SuppressWarnings("unused")
-	private String card_desc; 
+	public String card_desc; 
 	
 	private Boolean showBack = true;
 	

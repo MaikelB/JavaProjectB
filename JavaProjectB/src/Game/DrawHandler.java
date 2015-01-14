@@ -1,6 +1,7 @@
 package Game;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
@@ -119,7 +120,7 @@ public class DrawHandler extends JFrame implements Runnable {
 		Graphics g = getGraphics();
 
 		Graphics bbg = backBuffer.getGraphics();
-
+		bbg.setFont(new Font("TimesRoman", Font.PLAIN, 11));
 		bbg.setColor(Color.WHITE);
 		bbg.fillRect(0, 0, windowWidth, windowHeight);
 		bbg.setColor(Color.BLACK);
@@ -169,6 +170,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			} else {
 				switch(rarity) {
 				case 0:		bbg.drawImage(commonCard, 220 + (95*i),  200, this);
+							
 							break;
 				case 1:		bbg.drawImage(uncommonCard, 220 + (95*i),  200, this);
 							break;
@@ -178,9 +180,28 @@ public class DrawHandler extends JFrame implements Runnable {
 							break;
 				case 4:		bbg.drawImage(godlyCard, 220 + (95*i),  200, this);
 							break;
-				}	
+				}
+				String s1 = Main.enemyDeck.getOnTable(i).card_name;
+				String s2 = "";
+				if (s1.length() > 14 && s1 != null){
+					int q = (int)((s1.length()/14)+1);
+					int w = s1.length()%14;
+					for (int a = 0 ; a < q ; a++ ){
+						if(a == q-1 ){
+							s2 = s1.substring(0 + 13*a, 13+(13*(a-1))+w+1);
+						}
+						else{
+							s2 = s1.substring(0 + 13*a, 13+13*a);
+							s2 = s2 + "-";
+						}
+						bbg.drawString(s2, 230+95*i , 217+10*a);
+					}
+				}
+				else{
+					s2 = s1;
+					bbg.drawString(s2, 230+95*i , 217);
+				}
 			}
-			
 		}
 		//enemy spells
 		arraySize = main.enemyDeck.onSpells.size();
@@ -200,7 +221,28 @@ public class DrawHandler extends JFrame implements Runnable {
 							break;
 				case 4:		bbg.drawImage(godlyCard, 20 + (95*i),  200, this);
 							break;
-				}	
+				}
+				String s1 = Main.enemyDeck.getOnSpells(i).card_name;
+				String s2 = "";
+				if (s1.length() > 14 && s1 != null){
+					int q = (int)((s1.length()/14)+1);
+					int w = s1.length()%14;
+					for (int a = 0 ; a < q ; a++ ){
+						if(a == q-1 ){
+							s2 = s1.substring(0 + 13*a, 13+(13*(a-1))+w+1);
+						}
+						else{
+							s2 = s1.substring(0 + 13*a, 13+13*a);
+							s2 = s2 + "-";
+						}
+						bbg.drawString(s2, 30+95*i , 217+10*a);
+					}
+				}
+				else{
+					s2 = s1;
+					bbg.drawString(s2, 30+95*i , 217);
+				}
+				
 			}	
 		}
 		
@@ -232,7 +274,27 @@ public class DrawHandler extends JFrame implements Runnable {
 							break;
 				case 4:		bbg.drawImage(godlyCard, 215 + (95*i),  674, this);
 							break;
-			}	
+				}
+				String s1 = Main.playerDeck.getHandCard(i).card_name;
+				String s2 = "";
+				if (s1.length() > 14 && s1 != null){
+					int q = (int)((s1.length()/14)+1);
+					int w = s1.length()%14;
+					for (int a = 0 ; a < q ; a++ ){
+						if(a == q-1 ){
+							s2 = s1.substring(0 + 13*a, 13+(13*(a-1))+w+1);
+						}
+						else{
+							s2 = s1.substring(0 + 13*a, 13+13*a);
+							s2 = s2 + "-";
+						}
+						bbg.drawString(s2, 225+95*i , 691+10*a);
+					}
+				}
+				else{
+					s2 = s1;
+					bbg.drawString(s2, 225+95*i , 691);
+				}
 			}
 			
 		}
@@ -254,7 +316,27 @@ public class DrawHandler extends JFrame implements Runnable {
 							break;
 				case 4:		bbg.drawImage(godlyCard, 220 + (95*i),  380, this);
 							break;
-				}	
+				}
+				String s1 = Main.playerDeck.getOnTable(i).card_name;
+				String s2 = "";
+				if (s1.length() > 14 && s1 != null){
+					int q = (int)((s1.length()/14)+1);
+					int w = s1.length()%14;
+					for (int a = 0 ; a < q ; a++ ){
+						if(a == q-1 ){
+							s2 = s1.substring(0 + 13*a, 13+(13*(a-1))+w+1);
+						}
+						else{
+							s2 = s1.substring(0 + 13*a, 13+13*a);
+							s2 = s2 + "-";
+						}
+						bbg.drawString(s2, 230+95*i , 397+10*a);
+					}
+				}
+				else{
+					s2 = s1;
+					bbg.drawString(s2, 230+95*i , 397);
+				}
 			}
 			
 		}
@@ -277,11 +359,31 @@ public class DrawHandler extends JFrame implements Runnable {
 				case 4:		bbg.drawImage(godlyCard, 20 + (95*i),  380, this);
 							break;
 			}	
-			}	
+			}
+			String s1 = Main.playerDeck.getOnSpells(i).card_name;
+			String s2 = "";
+			if (s1.length() > 14 && s1 != null){
+				int q = (int)((s1.length()/14)+1);
+				int w = s1.length()%14;
+				for (int a = 0 ; a < q ; a++ ){
+					if(a == q-1 ){
+						s2 = s1.substring(0 + 13*a, 13+(13*(a-1))+w+1);
+					}
+					else{
+						s2 = s1.substring(0 + 13*a, 13+13*a);
+						s2 = s2 + "-";
+					}
+					bbg.drawString(s2, 37+95*i , 397+10*a);
+				}
+			}
+			else{
+				s2 = s1;
+				bbg.drawString(s2, 37+95*i , 397);
+			}
 		}
 		
 		//sellection draw
-		bbg.setColor(Color.RED);
+		//bbg.setColor(Color.RED);
 		arraySize = main.playerDeck.inHand.size();
 		for (int i = 0; i < arraySize; i++){
 			if(Main.inHandBoxes[i][1] == 1){
@@ -299,6 +401,28 @@ public class DrawHandler extends JFrame implements Runnable {
 				case 4:		bbg.drawImage(godlyCard, windowWidth/2-90, windowHeight/2-120, 180,240,this);
 							break;
 				}
+				bbg.setFont(new Font("TimesRoman", Font.PLAIN, 22));
+				String s1 = Main.playerDeck.getHandCard(i).card_name;
+				String s2 = "";
+				if (s1.length() > 14 && s1 != null){
+					int q = (int)((s1.length()/14)+1);
+					int w = s1.length()%14;
+					for (int a = 0 ; a < q ; a++ ){
+						if(a == q-1 ){
+							s2 = s1.substring(0 + 13*a, 13+(13*(a-1))+w+1);
+						}
+						else{
+							s2 = s1.substring(0 + 13*a, 13+13*a);
+							s2 = s2 + "-";
+						}
+						bbg.drawString(s2, windowWidth/2-90+17 , windowHeight/2-120+34 + 20*a);
+					}
+				}
+				else{
+					s2 = s1;
+					bbg.drawString(s2, windowWidth/2-90+17 , windowHeight/2-120 + 34);
+				}
+				bbg.setFont(new Font("TimesRoman", Font.PLAIN, 11));
 			}
 			
 		}
@@ -320,7 +444,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	/** void imageLoader() = Sets all image variables to a working image */
 	private void imageLoader(){
 		try{
-			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_Layout.png"));
+			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield.png"));
 			backCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Back.png"));
 			commonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Common.png"));
 			uncommonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Uncommon.png"));

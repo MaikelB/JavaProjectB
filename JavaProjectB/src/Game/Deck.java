@@ -80,7 +80,7 @@ public class Deck {
 	public void drawCard(){
 		int randomNum = 1 + (int)(Math.random()*deck.size());
 		Card draw = deck.get(randomNum - 1);
-		if(draw.equals(Main.playerDeck.getCard(randomNum-1))){
+		if(draw.equals(this.getCard(randomNum-1))){
 			draw.setShowBack(false);
 		}
 		deck.remove(draw);

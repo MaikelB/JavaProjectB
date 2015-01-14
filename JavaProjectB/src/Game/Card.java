@@ -37,6 +37,7 @@ public class Card {
 	 */
 	private int rarity;
 	
+	private int manaCost;
 	
 	/** Card( Name, Description, Special ability number, Array with attack&defense ) */
 	public Card(String nm, String desc, int spec, int[] st, int rar) {
@@ -133,5 +134,21 @@ public class Card {
 	}
 	public int getDefense(){
 		return card_stats[1];
+	}
+	public int getManaCost() {
+		int[] r = new int[5];
+		r[0] = 5;
+		r[1] = 10;
+		r[2] = 15;
+		r[3] = 20;
+		r[4] = 30;
+		int[] sp = new int[6];
+		sp[0] = 0;
+		sp[1] = 10;
+		sp[2] = 10;
+		sp[3] = 10;
+		sp[4] = 0;
+		sp[5] = 5;
+		return r[rarity]+sp[special];
 	}
 }

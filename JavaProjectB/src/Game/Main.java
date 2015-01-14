@@ -96,6 +96,9 @@ public class Main implements MouseListener {
 			AI.enemyTurn = false;
 			playerDeck.notPlayable.clear();
 			int arraySize = playerDeck.inHand.size();
+			
+			
+			
 			for (int i = 0; i < arraySize; i++) {
 				if (playerDeck.onSpells.size() >= 2
 						&& playerDeck.inHand.get(i).getRarity() == 4) {
@@ -131,6 +134,8 @@ public class Main implements MouseListener {
 
 	private void playCard() {
 		for (int i = 0; i < playerDeck.inHand.size(); i++) {
+			
+			
 			if (inHandBoxes[i][1] == 1) {
 				if (playerDeck.getHandCard(i).getSpecial() == 2) {
 					int tableSize = playerDeck.onTable.size();
@@ -153,7 +158,13 @@ public class Main implements MouseListener {
 					playerDeck.getHandCard(i).buffAttack(extraAttack);
 
 				}
+				
+				int mana = Player.getMana()-playerDeck.getHandCard(i).getManaCost();
+				int cost = playerDeck.getHandCard(i).getManaCost();
+				if(!(mana < 0)){
 				playerDeck.cardPlay(i);
+				Player.setMana(Player.getMana()-cost);
+				}
 				clearSelected();
 			}
 
@@ -195,7 +206,13 @@ public class Main implements MouseListener {
 				enemyDeck.getHandCard(0).buffAttack(extraAttack);
 
 			}
+			int mana = Enemy.getMana()-enemyDeck.getHandCard(0).getManaCost();
+			int cost = enemyDeck.getHandCard(0).getManaCost();
+			if(!(mana < 0)){
 			enemyDeck.cardPlay(0);
+			Enemy.setMana(Player.getMana()-cost);
+			}
+			
 		}
 
 	}

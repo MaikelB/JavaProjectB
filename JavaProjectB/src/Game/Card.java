@@ -64,7 +64,7 @@ public class Card {
 					break;
 		case 5:		System.out.println("Taunt");
 					break;
-		default: 	System.out.println("Wrong input (LINE 58 CARD.JAVA)");
+		default: 	System.out.println("Wrong input ()");
 					return 3058;
 		}
 		return special;

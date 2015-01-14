@@ -36,12 +36,16 @@ public class Deck {
 	 * and adds it onTable or OnSpells depending on it's special
 	 */
 	public void cardPlay( int i ) {
-		Card rm = inHand.get(i);
-		inHand.remove(rm);
-		if(rm.getRarity() == 4) {
-			onSpells.add(rm);
-		}else {		
-		onTable.add(rm);	
+		try {
+			Card rm = inHand.get(i);
+			inHand.remove(rm);
+			if(rm.getRarity() == 4) {
+				onSpells.add(rm);
+			}else {		
+			onTable.add(rm);	
+			}
+		} catch(IndexOutOfBoundsException e) {
+			System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 		}
 	}
 	

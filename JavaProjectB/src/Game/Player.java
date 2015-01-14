@@ -2,7 +2,7 @@ package Game;
 
 public class Player {
 	private int health=20, mana=10;
-	private String hero;
+	static private String hero;
 
 	/**
 	 * Player(health, mana, hero) 
@@ -56,7 +56,7 @@ public class Player {
 	/**
 	 * Returns what hero the player has.
 	 */
-	public String getHero(){
+	static public String getHero(){
 		return hero;
 	}
 }

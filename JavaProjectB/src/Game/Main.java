@@ -54,6 +54,9 @@ public class Main implements MouseListener{
 		playerDeck.drawCard();
 		playerDeck.drawCard();
 		playerDeck.drawCard();
+		playerDeck.drawCard();
+		playerDeck.drawCard();
+		playerDeck.drawCard();
 	
 	}
 	

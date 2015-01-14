@@ -20,7 +20,7 @@ public class Card {
 	 * 4 = spell	 * 
 	 * 5 = taunt = 5 mana
 	 */
-	private int special;
+	private static int special;
 	
 	/** int[] card_stats = holds the attack and defense values
 	 * card_stats[0] = attack
@@ -50,7 +50,7 @@ public class Card {
 	/** getSpecial() returns an integer for what special the card has
 	 * if none, return null
 	 */
-	public int getSpecial() {
+	public static int getSpecial() {
 		switch(special) {
 		case 0:		System.out.println("Nothing");
 					break;
@@ -58,7 +58,7 @@ public class Card {
 					break;
 		case 2:		System.out.println("Defense up");
 					break;
-		case 3:		System.out.println("attack up up");
+		case 3:		System.out.println("attack up");
 					break;
 		case 4:		System.out.println("Spell");
 					break;

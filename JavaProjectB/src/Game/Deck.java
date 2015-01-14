@@ -41,8 +41,9 @@ public class Deck {
 			inHand.remove(rm);
 			if(rm.getRarity() == 4) {
 				onSpells.add(rm);
+				System.out.println("boobies");
 			}else {		
-			onTable.add(rm);	
+				onTable.add(rm);	
 			}
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("IndexOutOfBoundsException: " + e.getMessage());

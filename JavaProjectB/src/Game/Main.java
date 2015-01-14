@@ -65,6 +65,8 @@ public class Main implements MouseListener {
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
+		enemyDeck.drawCard();
+
 
 	}
 
@@ -169,20 +171,18 @@ public class Main implements MouseListener {
 	}
 
 	public static void playEnemyCard() {
-		for (int i = 0; i < enemyDeck.inHand.size(); i++) {
-
-			if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
-				if (enemyDeck.getHandCard(i).getSpecial() == 2) {
+			if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(0))) {
+				if (enemyDeck.getHandCard(0).getSpecial() == 2) {
 					int tableSize = enemyDeck.onTable.size();
 					for (int a = 0; a < tableSize; a++) {
 						enemyDeck.onTable.get(a).buffDefense(1);
 					}
-				} else if (enemyDeck.getHandCard(i).getSpecial() == 3) {
+				} else if (enemyDeck.getHandCard(0).getSpecial() == 3) {
 					int tableSize = enemyDeck.onTable.size();
 					for (int b = 0; b < tableSize; b++) {
 						enemyDeck.onTable.get(b).buffAttack(1);
 					}
-				} else if (enemyDeck.getHandCard(i).getSpecial() == 4) {
+				} else if (enemyDeck.getHandCard(0).getSpecial() == 4) {
 					int tableSize = enemyDeck.onTable.size();
 					int extraAttack = 0;
 					for (int d = 0; d < tableSize; d++) {
@@ -190,12 +190,12 @@ public class Main implements MouseListener {
 							extraAttack += 1;
 						}
 					}
-					enemyDeck.getHandCard(i).buffAttack(extraAttack);
+					enemyDeck.getHandCard(0).buffAttack(extraAttack);
 
 				}
-				enemyDeck.cardPlay(i);
+				enemyDeck.cardPlay(0);
 			}
-		}
+		
 	}
 
 	public static void buttonClickEnemy(int i) {

@@ -48,6 +48,9 @@ public class DrawHandler extends JFrame implements Runnable {
 	private BufferedImage rareCard = null;
 	private BufferedImage legendaryCard = null;
 	private BufferedImage godlyCard = null;
+	private BufferedImage selectCard = null;
+	private BufferedImage heroEarth = null;
+	private BufferedImage heroLight = null;
 	/*
 	 * int array for buttons to be drawn.
 	 * x,y,active,tasks.
@@ -204,10 +207,12 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		//sellection draw
 		bbg.setColor(Color.RED);
-		for (int i = 0; i < 9; i++){
+		arraySize = main.playerDeck.inHand.size();
+		for (int i = 0; i < arraySize; i++){
 			if(Main.inHandBoxes[i][1] == 1){
-				int rarity = main.playerDeck.getCard(i).getRarity();
+				int rarity = main.playerDeck.getHandCard(i).getRarity();
 				
 				switch(rarity) {
 				case 0:		bbg.drawImage(commonCard, windowWidth/2-90, windowHeight/2-120, 180,240,this);
@@ -224,6 +229,16 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		arraySize = main.playerDeck.onTable.size();
+		for (int i = 0; i < arraySize; i++){
+			if(Main.playerOnTableBoxes[i][1] == 1){
+				
+				bbg.drawImage(selectCard, 220 + 95*i, 380, this);
+			}
+			
+		}
+		
+		
 		
 				
 		g.drawImage(backBuffer, insets.left, insets.top, this);
@@ -232,13 +247,16 @@ public class DrawHandler extends JFrame implements Runnable {
 	/** void imageLoader() = Sets all image variables to a working image */
 	private void imageLoader(){
 		try{
-			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_layout.png"));
+			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_Layout.png"));
 			backCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Back.png"));
 			commonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Common.png"));
 			uncommonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Uncommon.png"));
 			rareCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Rare.png"));
 			legendaryCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Legendary.png"));
 			godlyCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Godly.png"));
+			selectCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Border.png"));
+			heroEarth = ImageIO.read(getClass().getResourceAsStream("images/Deck1-Hero.png"));
+			heroLight = ImageIO.read(getClass().getResourceAsStream("images/Deck2-Hero.png"));
 		}catch(IOException e){
 			
 		}

@@ -89,8 +89,7 @@ public class Main implements MouseListener{
 	private void playCard( ) {
 		for(int i = 0; i < inHandBoxes.length; i++) {
 			if(inHandBoxes[i][1]==1) {
-				if(playerDeck.get)
-				playerDeck.cardPlay(i);
+					playerDeck.cardPlay(i);
 			}
 		}
 	}
@@ -110,6 +109,17 @@ public class Main implements MouseListener{
 			}
 		}
 	}
+	private void clearSelected() {
+		for(int i = 0; i < 9; i++) {
+			inHandBoxes[i][1] 			= 0;
+			playerOnTableBoxes[i][1] 	= 0;
+			enemyOnTableBoxes[i][1] 	= 0;
+		}
+		for(int i = 0; i < 2; i++) {
+			playerOnSpellsBoxes[i][1] 	= 0;
+		}
+		
+	}
 	private void clickBoxes(int x, int y){
 		System.out.println(x + " - " + y);
 		//inHand
@@ -117,7 +127,8 @@ public class Main implements MouseListener{
 		for(int i =0 ; i < 9 ; i++){
 			if (x > 215 + 95*i && x < 305 + 95*i && y > 674 && inHandBoxes[i][0] == 1){
 				System.out.println("inhandbox: " + i);
-				inHandBoxes[i][1] = 1;
+				clearSelected();
+				inHandBoxes[i][1] = 1;				
 			}
 		}
 		//onTable player

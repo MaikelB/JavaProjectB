@@ -35,7 +35,7 @@ public class Card {
 	 * 3 = legendary (gold) = 20 mana
 	 * 4 = GOD-LIKE (pink) = 30 mana
 	 */
-	private int rarity;
+	static private int rarity;
 	
 	
 	/** Card( Name, Description, Special ability number, Array with attack&defense ) */

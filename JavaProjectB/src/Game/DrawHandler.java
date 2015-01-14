@@ -58,7 +58,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	 * 0 = selecting hero
 	 * 1 = placing on board
 	 * 2 = attacking/casting with card or spell card
-	 * 3 = *to be continued.*
+	 * 3 = end turn
 	 */
 	public static int[][] buttons = {
 			{
@@ -71,7 +71,10 @@ public class DrawHandler extends JFrame implements Runnable {
 				0,0,0,0
 			},
 			{
-				1134,224,1,1
+				1124,235,1,1
+			},
+			{
+				1136,445,1,3
 			}
 			
 	};
@@ -141,10 +144,77 @@ public class DrawHandler extends JFrame implements Runnable {
 		
 		
 		//cards
-		if(main.playerDeck.deck.size() != 0) {
-			bbg.drawImage(backCard, 55, 560, this);
+		//enemy deck
+		if(main.enemyDeck.deck.size() != 0) {
+			bbg.drawImage(backCard, 50, 20, this);
 		}
-		int arraySize = main.playerDeck.inHand.size();
+		//enemy graveyard
+		if(main.enemyDeck.graveyard.size() != 0) {
+			bbg.drawImage(backCard, 1146, 560, this);
+		}
+		// emeny deck
+		int arraySize = main.enemyDeck.inHand.size();
+		for(int i = 0; i < arraySize; i++) {
+				bbg.drawImage(backCard, 215 + (95*i), -94 , this);
+			
+		}
+		//enemy table
+		arraySize = main.enemyDeck.onTable.size();
+		System.out.println(arraySize);
+		for(int i = 0; i < arraySize; i++) {
+			int rarity = main.enemyDeck.getOnTable(i).getRarity();
+			if(main.enemyDeck.getOnTable(i).getShowBack()) {
+				bbg.drawImage(backCard, 215 + (95*i), 674, this);
+			} else {
+				switch(rarity) {
+				case 0:		bbg.drawImage(commonCard, 220 + (95*i),  380, this);
+							break;
+				case 1:		bbg.drawImage(uncommonCard, 220 + (95*i),  380, this);
+							break;
+				case 2: 	bbg.drawImage(rareCard, 220 + (95*i),  380, this);
+							break;
+				case 3:		bbg.drawImage(legendaryCard, 220 + (95*i),  380, this);
+							break;
+				case 4:		bbg.drawImage(godlyCard, 220 + (95*i),  380, this);
+							break;
+				}	
+			}
+			
+		}
+		//enemy spells
+		arraySize = main.enemyDeck.onSpells.size();
+		for(int i = 0; i < arraySize; i++) {
+			int rarity = main.enemyDeck.getOnSpells(i).getRarity();
+			if(main.enemyDeck.getOnSpells(i).getShowBack()) {
+				bbg.drawImage(backCard, 215 + (95*i), 674, this);
+			} else {
+				switch(rarity) {
+				case 0:		bbg.drawImage(commonCard, 20 + (95*i),  380, this);
+							break;
+				case 1:		bbg.drawImage(uncommonCard, 20 + (95*i),  380, this);
+							break;
+				case 2: 	bbg.drawImage(rareCard, 20 + (95*i),  380, this);
+							break;
+				case 3:		bbg.drawImage(legendaryCard, 20 + (95*i),  380, this);
+							break;
+				case 4:		bbg.drawImage(godlyCard, 20 + (95*i),  380, this);
+							break;
+				}	
+			}	
+		}
+		
+		
+		
+		//player deck
+		if(main.playerDeck.deck.size() != 0) {
+			bbg.drawImage(backCard, 50, 560, this);
+		}
+		//player graveyard
+		if(main.playerDeck.graveyard.size() != 0) {
+			bbg.drawImage(backCard, 1146, 560, this);
+		}
+		//player hand
+		arraySize = main.playerDeck.inHand.size();
 		for(int i = 0; i < arraySize; i++) {
 			int rarity = main.playerDeck.getHandCard(i).getRarity();
 			if(main.playerDeck.getHandCard(i).getShowBack()) {
@@ -157,14 +227,15 @@ public class DrawHandler extends JFrame implements Runnable {
 							break;
 				case 2: 	bbg.drawImage(rareCard, 215 + (95*i),  674, this);
 							break;
-				case 3:		bbg.drawImage(godlyCard, 215 + (95*i),  674, this);
+				case 3:		bbg.drawImage(legendaryCard, 215 + (95*i),  674, this);
 							break;
-				case 4:		bbg.drawImage(legendaryCard, 215 + (95*i),  674, this);
+				case 4:		bbg.drawImage(godlyCard, 215 + (95*i),  674, this);
 							break;
 			}	
 			}
 			
 		}
+		//player table
 		arraySize = main.playerDeck.onTable.size();
 		for(int i = 0; i < arraySize; i++) {
 			int rarity = main.playerDeck.getOnTable(i).getRarity();
@@ -178,14 +249,15 @@ public class DrawHandler extends JFrame implements Runnable {
 							break;
 				case 2: 	bbg.drawImage(rareCard, 220 + (95*i),  380, this);
 							break;
-				case 3:		bbg.drawImage(godlyCard, 220 + (95*i),  380, this);
+				case 3:		bbg.drawImage(legendaryCard, 220 + (95*i),  380, this);
 							break;
-				case 4:		bbg.drawImage(legendaryCard, 220 + (95*i),  380, this);
+				case 4:		bbg.drawImage(godlyCard, 220 + (95*i),  380, this);
 							break;
-			}	
+				}	
 			}
 			
 		}
+		//player spells
 		arraySize = main.playerDeck.onSpells.size();
 		for(int i = 0; i < arraySize; i++) {
 			int rarity = main.playerDeck.getOnSpells(i).getRarity();
@@ -193,20 +265,20 @@ public class DrawHandler extends JFrame implements Runnable {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
-				case 0:		bbg.drawImage(commonCard, 215 + (95*i),  674, this);
+				case 0:		bbg.drawImage(commonCard, 20 + (95*i),  380, this);
 							break;
-				case 1:		bbg.drawImage(uncommonCard, 215 + (95*i),  674, this);
+				case 1:		bbg.drawImage(uncommonCard, 20 + (95*i),  380, this);
 							break;
-				case 2: 	bbg.drawImage(rareCard, 215 + (95*i),  674, this);
+				case 2: 	bbg.drawImage(rareCard, 20 + (95*i),  380, this);
 							break;
-				case 3:		bbg.drawImage(godlyCard, 215 + (95*i),  674, this);
+				case 3:		bbg.drawImage(legendaryCard, 20 + (95*i),  380, this);
 							break;
-				case 4:		bbg.drawImage(legendaryCard, 215 + (95*i),  674, this);
+				case 4:		bbg.drawImage(godlyCard, 20 + (95*i),  380, this);
 							break;
 			}	
-			}
-			
+			}	
 		}
+		
 		//sellection draw
 		bbg.setColor(Color.RED);
 		arraySize = main.playerDeck.inHand.size();
@@ -247,7 +319,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	/** void imageLoader() = Sets all image variables to a working image */
 	private void imageLoader(){
 		try{
-			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_Layout.png"));
+			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield.png"));
 			backCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Back.png"));
 			commonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Common.png"));
 			uncommonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Uncommon.png"));

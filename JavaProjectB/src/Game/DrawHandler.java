@@ -162,22 +162,21 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		//enemy table
 		arraySize = main.enemyDeck.onTable.size();
-		System.out.println(arraySize);
 		for(int i = 0; i < arraySize; i++) {
 			int rarity = main.enemyDeck.getOnTable(i).getRarity();
 			if(main.enemyDeck.getOnTable(i).getShowBack()) {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
-				case 0:		bbg.drawImage(commonCard, 220 + (95*i),  380, this);
+				case 0:		bbg.drawImage(commonCard, 220 + (95*i),  200, this);
 							break;
-				case 1:		bbg.drawImage(uncommonCard, 220 + (95*i),  380, this);
+				case 1:		bbg.drawImage(uncommonCard, 220 + (95*i),  200, this);
 							break;
-				case 2: 	bbg.drawImage(rareCard, 220 + (95*i),  380, this);
+				case 2: 	bbg.drawImage(rareCard, 220 + (95*i),  200, this);
 							break;
-				case 3:		bbg.drawImage(legendaryCard, 220 + (95*i),  380, this);
+				case 3:		bbg.drawImage(legendaryCard, 220 + (95*i),  200, this);
 							break;
-				case 4:		bbg.drawImage(godlyCard, 220 + (95*i),  380, this);
+				case 4:		bbg.drawImage(godlyCard, 220 + (95*i),  200, this);
 							break;
 				}	
 			}
@@ -191,15 +190,15 @@ public class DrawHandler extends JFrame implements Runnable {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
-				case 0:		bbg.drawImage(commonCard, 20 + (95*i),  380, this);
+				case 0:		bbg.drawImage(commonCard, 20 + (95*i),  200, this);
 							break;
-				case 1:		bbg.drawImage(uncommonCard, 20 + (95*i),  380, this);
+				case 1:		bbg.drawImage(uncommonCard, 20 + (95*i),  200, this);
 							break;
-				case 2: 	bbg.drawImage(rareCard, 20 + (95*i),  380, this);
+				case 2: 	bbg.drawImage(rareCard, 20 + (95*i),  200, this);
 							break;
-				case 3:		bbg.drawImage(legendaryCard, 20 + (95*i),  380, this);
+				case 3:		bbg.drawImage(legendaryCard, 20 + (95*i),  200, this);
 							break;
-				case 4:		bbg.drawImage(godlyCard, 20 + (95*i),  380, this);
+				case 4:		bbg.drawImage(godlyCard, 20 + (95*i),  200, this);
 							break;
 				}	
 			}	
@@ -321,7 +320,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	/** void imageLoader() = Sets all image variables to a working image */
 	private void imageLoader(){
 		try{
-			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield.png"));
+			playField = ImageIO.read(getClass().getResourceAsStream("images/Playfield_Layout.png"));
 			backCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Back.png"));
 			commonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Common.png"));
 			uncommonCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Uncommon.png"));

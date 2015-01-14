@@ -9,7 +9,7 @@ public class FileHandler {
 	static private List<String[]> decks = new ArrayList<String[]>();
 	static private String[] deck1 = {
 			"deck1",
-			"C:\\Users\\Jens\\git\\JavaProjectB\\JavaProjectB\\src\\Game\\Decks\\Deck1.data" };
+			"src\\Game\\Decks\\Deck1.data" };
 	static private String dn, dc, cn, cd;
 	static private int spec, rar;
 	static private int[] st = new int[2];

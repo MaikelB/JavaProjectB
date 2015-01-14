@@ -26,7 +26,7 @@ public class Card {
 	 * card_stats[0] = attack
 	 * card_stats[1] = defense
 	 */
-	private int[] card_stats; 
+	public int[] card_stats; 
 	
 	/** int rarity = holds the rarity number of the card. numbers are below from worst to best
 	 * 0 = common (white) 5
@@ -40,10 +40,12 @@ public class Card {
 	
 	/** Card( Name, Description, Special ability number, Array with attack&defense ) */
 	public Card(String nm, String desc, int spec, int[] st, int rar) {
+		card_stats = new int[2];
 		card_name 	= nm;
 		card_desc 	= desc;
 		special		= spec;
-		card_stats	= st;
+		card_stats[0]	= st[0];
+		card_stats[1]	= st[1];
 		rarity		= rar;
 	}
 	
@@ -125,5 +127,11 @@ public class Card {
 
 	public void setShowBack(Boolean showBack) {
 		this.showBack = showBack;
+	}
+	public int getAttack(){
+		return card_stats[0];
+	}
+	public int getDefense(){
+		return card_stats[1];
 	}
 }

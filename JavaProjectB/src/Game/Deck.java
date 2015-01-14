@@ -41,7 +41,7 @@ public class Deck {
 		try {
 			Card rm = inHand.get(i);
 			inHand.remove(rm);
-			if(rm.getRarity() == 4 && onSpells.size() < 2) {
+			if(rm.getSpecial() == 4 && onSpells.size() < 2) {
 				onSpells.add(rm);
 			}else {		
 				onTable.add(rm);	

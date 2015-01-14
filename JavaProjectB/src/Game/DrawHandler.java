@@ -52,6 +52,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	private BufferedImage selectCard = null;
 	private BufferedImage heroEarth = null;
 	private BufferedImage heroLight = null;
+	private BufferedImage buttonImage = null;
 	/*
 	 * int array for buttons to be drawn.
 	 * x,y,active,tasks.
@@ -127,14 +128,22 @@ public class DrawHandler extends JFrame implements Runnable {
 		bbg.drawImage(playField, 0, 0, this);
 		
 		//buttons
+		bbg.setFont(new Font("TimesRoman", Font.PLAIN, 15));
 		for(int i = 0; i < buttons.length; i++){
 			if (buttons[i][2] == 1 ){
-				bbg.fillRoundRect(buttons[i][0], buttons[i][1] , 100, 40, 10, 10);
+				bbg.drawImage(buttonImage, buttons[i][0], buttons[i][1], this);
+				if (buttons[i][3] == 1){
+					bbg.drawString("Play Card", buttons[i][0]+5, buttons[i][1]+25);
+				}
+				if (buttons[i][3] == 2){
+					bbg.drawString("Attack", buttons[i][0]+5, buttons[i][1]+25);
+				}
+				if (buttons[i][3] == 3){
+					bbg.drawString("End Turn", buttons[i][0]+5, buttons[i][1]+25);
+				}
 			}
-			
-			
 		}
-		
+		bbg.setFont(new Font("TimesRoman", Font.PLAIN, 11));
 		
 		
 		
@@ -201,6 +210,9 @@ public class DrawHandler extends JFrame implements Runnable {
 					s2 = s1;
 					bbg.drawString(s2, 230+95*i , 217);
 				}
+				s1 = "" + Main.enemyDeck.getCard(i).card_stats[0];
+				System.out.println(Main.enemyDeck.getCard(i).card_stats[0]);
+				bbg.drawString(s1, 255 + (95*i), 295);
 			}
 		}
 		//enemy spells
@@ -454,6 +466,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			selectCard = ImageIO.read(getClass().getResourceAsStream("images/Card_Border.png"));
 			heroEarth = ImageIO.read(getClass().getResourceAsStream("images/Deck1-Hero.png"));
 			heroLight = ImageIO.read(getClass().getResourceAsStream("images/Deck2-Hero.png"));
+			buttonImage = ImageIO.read(getClass().getResourceAsStream("images/Button.png"));
 		}catch(IOException e){
 			
 		}

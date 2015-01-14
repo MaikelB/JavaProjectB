@@ -19,7 +19,6 @@ public class Enemy {
 	}
 	/** setMana = sets the mana(energy to place cards) of the Enemy.
 	 * The first if is to check if the mana is above 40 and if it is, change it to 40.
-	 * the 2nd if is to give the player +10 mana after his/her turn.
 	 */
 
 	public void setMana(int ma){
@@ -27,9 +26,6 @@ public class Enemy {
 		if (ma >40){
 			ma = 40;
 		}
-		//if (next turn){
-		//ma = ma+10;
-		//}
 	}
 	/** setHero = This uses Math.random to pick a random number between 1 and 3 and then puts it through the switch statement to
 	 * decide which deck is picked. the Main uses this to load the enemy deck.

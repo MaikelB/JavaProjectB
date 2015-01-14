@@ -29,23 +29,18 @@ public class Player {
 	/**
 	 * Used in other classes to change health of player
 	 */
-	public void setHealth(int he){
-		health = he;
+	public void setHealth(int hp){
+		health = hp;
 	}
 	
 	/**
 	 * sets mana of player.
 	 * if it goes above 40, it is set back to 40
-	 * player gets +10 mana next turn.
 	 */
-	public void setMana(int ma){
-		mana = ma;
-		if (ma >40){
-			ma = 40;
+	public void setMana(){
+		if (mana >40){
+			mana = 40;
 		}
-		//if (next turn){
-		//ma = ma+10;
-		//}
 	}
 	/**
 	 * Is called from another class to set player hero

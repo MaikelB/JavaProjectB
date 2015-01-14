@@ -1,7 +1,7 @@
 package Game;
 
 public class Player {
-	private int health=20, mana=10;
+	static private int health=20, mana=10;
 	static private String hero;
 
 	/**
@@ -16,20 +16,20 @@ public class Player {
 	/**
 	 * Returns health of the player to be used in other classes
 	 */
-	public int getHealth(){
+	static public int getHealth(){
 		return health;
 	}
 	/**
 	 * Returns mana of player to be used in other classes 
 	 */
-	public int getMana(){
+	static public int getMana(){
 		return mana;
 	}
 	
 	/**
 	 * Used in other classes to change health of player
 	 */
-	public void setHealth(int hp){
+	static public void setHealth(int hp){
 		health = hp;
 	}
 	
@@ -37,7 +37,7 @@ public class Player {
 	 * sets mana of player.
 	 * if it goes above 40, it is set back to 40
 	 */
-	public void setMana(){
+	static public void setMana(){
 		if (mana >40){
 			mana = 40;
 		}

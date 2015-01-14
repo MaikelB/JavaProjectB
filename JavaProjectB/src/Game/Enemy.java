@@ -1,7 +1,7 @@
 package Game;
 
 public class Enemy {
-	private int health=20, mana=10;
+	static private int health=20, mana=10;
 	static private String hero;
 
 	/**
@@ -14,14 +14,14 @@ public class Enemy {
 	}
 	/** setHealth = sets the health of the player(can be used from another class)
 	 */
-	public void setHealth(int hp){
+	static public void setHealth(int hp){
 		health = hp;
 	}
 	/** setMana = sets the mana(energy to place cards) of the Enemy.
 	 * The first if is to check if the mana is above 40 and if it is, change it to 40.
 	 */
 
-	public void setMana(int ma){
+	static public void setMana(int ma){
 		mana = ma;
 		if (ma >40){
 			ma = 40;
@@ -41,12 +41,12 @@ public class Enemy {
 	}
 	/** getHealth = returns player health.
 	 */
-	public int getHealth(){
+	static public int getHealth(){
 		return health;
 	}
 	/** getMana = returns the mana(energy to place cards) of the player.
 	 */
-	public int getMana(){
+	static public int getMana(){
 		return mana;
 	}
 	/** getHero = Returns what hero is picked for the Enemy player.

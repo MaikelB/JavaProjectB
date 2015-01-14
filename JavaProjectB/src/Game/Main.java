@@ -88,7 +88,7 @@ public class Main implements MouseListener{
 			
 		}
 	}
-	private void playCard( ) {
+	private void playCard() {
 		for(int i = 0; i < inHandBoxes.length; i++) {
 			if(inHandBoxes[i][1]==1) {
 					if(playerDeck.getHandCard(i).getSpecial() == 2){
@@ -112,9 +112,10 @@ public class Main implements MouseListener{
 								}
 							}
 						}
-					}
 					playerDeck.cardPlay(i);
 					clearSelected();
+					}
+
 			}
 		}
 	private void buttonClickBoxes(int x, int y){
@@ -256,7 +257,7 @@ public class Main implements MouseListener{
 		for (int i = 0 ; i < arrayListSize && arrayListSize != 0; i++){
 			playerOnSpellsBoxes[i][0] = 1;
 		}
-		for (int i = arrayListSize ; i < 9; i++) {
+		for (int i = 0 ; i < arrayListSize ; i++) {
 			playerOnSpellsBoxes[i][0] = 0;
 		}
 		

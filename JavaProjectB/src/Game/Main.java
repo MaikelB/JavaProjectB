@@ -138,6 +138,40 @@ public class Main implements MouseListener{
 
 			}
 		}
+	
+	private void playEnemyCard() {
+		for (int i = 0; i < enemyDeck.inHand.size(); i++) {
+
+			if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
+				if (enemyDeck.getHandCard(i).getSpecial() == 2) {
+					int tableSize = enemyDeck.onTable.size();
+					for (int a = 0; a < tableSize; a++) {
+						enemyDeck.onTable.get(a).buffDefense(1);
+					}
+				} else if (enemyDeck.getHandCard(i).getSpecial() == 3) {
+					int tableSize = enemyDeck.onTable.size();
+					for (int b = 0; b < tableSize; b++) {
+						enemyDeck.onTable.get(b).buffAttack(1);
+					}
+				} else if (enemyDeck.getHandCard(i).getSpecial() == 4) {
+					int tableSize = enemyDeck.onTable.size();
+					int extraAttack = 0;
+					for (int d = 0; d < tableSize; d++) {
+						if (enemyDeck.onTable.get(d).getSpecial() == 1) {
+							extraAttack += 1;
+						}
+					}
+					enemyDeck.getHandCard(i).buffAttack(extraAttack);
+
+				}
+				enemyDeck.cardPlay(i);
+			}
+		}
+	}
+	
+	
+	
+	
 	private void buttonClickBoxes(int x, int y){
 		for( int i =0 ; i < DrawHandler.buttons.length; i++){
 			if(x > DrawHandler.buttons[i][0] && x< DrawHandler.buttons[i][0]+buttonSize[0] && y > DrawHandler.buttons[i][1] && y < DrawHandler.buttons[i][1]+ buttonSize[1] && DrawHandler.buttons[i][2] == 1 ){				

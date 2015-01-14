@@ -10,6 +10,8 @@ public class Deck {
 	/**String deck_desc = holds the description of the deck */
 	private String deck_desc;
 	
+	static public ArrayList<Card> notPlayable = new ArrayList<Card>();
+	
 	/** ArrayList<Card> deck = holds the cards still in your deck */
 	static public ArrayList<Card> deck = new ArrayList<Card>();
 	
@@ -39,9 +41,8 @@ public class Deck {
 		try {
 			Card rm = inHand.get(i);
 			inHand.remove(rm);
-			if(rm.getRarity() == 4) {
+			if(rm.getRarity() == 4 && onSpells.size() < 2) {
 				onSpells.add(rm);
-				System.out.println("boobies");
 			}else {		
 				onTable.add(rm);	
 			}

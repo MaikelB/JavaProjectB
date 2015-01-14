@@ -1,11 +1,12 @@
 package Game;
 
 public class Enemy {
-	private int health=20, mana=10;
+	private int health=20, mana=10, hero;
 
-	public Enemy(int hp, int ma){
+	public Enemy(int hp, int ma, int he){
 		health = hp;
 		mana = ma;
+		hero = he;
 	}
 	
 	public int getHealth(){
@@ -14,16 +15,24 @@ public class Enemy {
 	public int getMana(){
 		return mana;
 	}
-	public void setHealth(){
-		
+	public void setHealth(int hp){
+		health = hp;
 	}
-	public void setMana(){
-		if (mana >40){
-			mana = 40;
+	public void setMana(int ma){
+		mana = ma;
+		if (ma >40){
+			ma = 40;
 		}
 		//if (next turn){
-		//mana = mana+10;
+		//ma = ma+10;
 		//}
+	}
+	public void setHero(int he){
+		hero = he;
+		he = (int) Math.random()*3 + 1;
+	}
+	public int getHere(){
+		return hero;
 	}
 	
 }

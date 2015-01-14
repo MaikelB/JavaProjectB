@@ -60,14 +60,26 @@ public class Deck {
 	public void cardDie( int i ) {
 		Card rm = onTable.get(i);
 		onTable.remove(rm);
+		rm.setShowBack(true);
 		graveyard.add(rm);
+		
 	}
 	
 	/** boolean setCard( Card to add to the deck )
 	 * adds #c card to the deck
 	 */
-	public static boolean setCard( Card c ){
-		return false;
+	public void setCard( Card c ){
+		deck.add(c);
+	}
+	public void drawCard(){
+		int randomNum = 1 + (int)(Math.random()*deck.size());
+		System.out.println(deck.size());
+		Card draw = deck.get(randomNum - 1);
+		if(draw.equals(Main.playerDeck.getCard(randomNum-1))){
+			draw.setShowBack(false);
+		}
+		deck.remove(draw);
+		inHand.add(draw);
 	}
 	
 	/** Card getCard( index of the card to get )

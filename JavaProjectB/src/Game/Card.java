@@ -10,7 +10,7 @@ public class Card {
 	@SuppressWarnings("unused")
 	private String card_desc; 
 	
-	private Boolean showBack = true;
+	static private Boolean showBack = true;
 	
 	/** int special = holds the special of the card in number format 
 	 * 0 = nothing
@@ -74,7 +74,7 @@ public class Card {
 	 * if none, return null
 	 */
 	public int getRarity() {
-		switch(rarity) {
+		/*switch(rarity) {
 		case 0:		System.out.println("common");
 					break;
 		case 1:		System.out.println("uncommon");
@@ -87,7 +87,7 @@ public class Card {
 					break;
 		default: 	System.out.println("Wrong input (LINE 79 CARD.JAVA)");
 					return 3079;
-		}
+		}*/
 		return rarity;
 	}
 	
@@ -121,5 +121,9 @@ public class Card {
 
 	public Boolean getShowBack() {
 		return showBack;
+	}
+
+	public void setShowBack(Boolean showBack) {
+		this.showBack = showBack;
 	}
 }

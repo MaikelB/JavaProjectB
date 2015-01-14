@@ -3,6 +3,7 @@ package Game;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 
 
 
@@ -12,6 +13,7 @@ public class Main implements MouseListener{
 	private boolean isRunning = true;
 	public static Deck playerDeck = null;
 	public static Deck enemyDeck = null;
+	private int[] buttonSize = {100,40}; 
 	/*
 	 * arrays for the mouse hover and click-boxes
 	 */
@@ -19,12 +21,18 @@ public class Main implements MouseListener{
 	static private int[][] playerOnTableBoxes = new int[9][2];
 	static private int[][] playerOnSpellsBoxes = new int[2][2];
 	static private int[][] enemyOnTableBoxes = new int[9][2];
-	static private int[][] gameButtonBoxes = new int[10][2];
 	static private int[][] heroBoxes = new int[2][2];
 		
 	
 	public static void main(String[] args) {
 		Main game = new Main();
+		FileHandler fileHandler = new FileHandler();
+		try {
+			fileHandler.loadDeck("deck1", true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		game.run();
 
 	}
@@ -39,7 +47,11 @@ public class Main implements MouseListener{
 		for (int i = 0; i < 9 ; i++){
 			inHandBoxes[i][0] = 1;
 			inHandBoxes[i][1] = 0;
+			
 		}
+		playerDeck.drawCard();
+		playerDeck.drawCard();
+		playerDeck.drawCard();
 		
 	}
 	
@@ -86,7 +98,19 @@ public class Main implements MouseListener{
 		}
 	}
 	private void buttonClickBoxes(int x, int y){
-		
+		for( int i =0 ; i < DrawHandler.buttons.length; i++){
+			if(x > DrawHandler.buttons[i][0] && x< DrawHandler.buttons[i][0]+buttonSize[0] && y > DrawHandler.buttons[i][1] && y < DrawHandler.buttons[i][1]+ buttonSize[1] && DrawHandler.buttons[i][2] == 1 ){				
+				switch(DrawHandler.buttons[i][3]){
+				case 0: /*chooseHero();*/ System.out.println("buttoncheck hero");
+				break;
+				case 1: /*playCard();*/	System.out.println("buttoncheck play");
+				break;
+				case 2: /*attackCard();*/ System.out.println("buttoncheck attack");
+				break;
+				
+				}
+			}
+		}
 	}
 	private void clickBoxes(int x, int y){
 		System.out.println(x + " - " + y);
@@ -121,7 +145,7 @@ public class Main implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		clickBoxes(e.getX() - 3, e.getY() - 26);
-		
+
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {

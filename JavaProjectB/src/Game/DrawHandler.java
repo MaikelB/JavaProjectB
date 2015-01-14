@@ -40,7 +40,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	/** Main main = holds the thread of main */
 	Main main;
 	
-	/** BufferedImage playField = Hold the background image */
+	/** BufferedImage playField = Hold the image */
 	private BufferedImage playField = null;
 	private BufferedImage backCard = null;
 	private BufferedImage commonCard = null;
@@ -48,6 +48,30 @@ public class DrawHandler extends JFrame implements Runnable {
 	private BufferedImage rareCard = null;
 	private BufferedImage legendaryCard = null;
 	private BufferedImage godlyCard = null;
+	/*
+	 * int array for buttons to be drawn.
+	 * x,y,active,tasks.
+	 * tasks:
+	 * 0 = selecting hero
+	 * 1 = placing on board
+	 * 2 = attacking/casting with card or spell card
+	 * 3 = *to be continued.*
+	 */
+	public static int[][] buttons = {
+			{
+				0,0,0,0
+			},
+			{
+				0,0,0,0
+			},
+			{
+				0,0,0,0
+			},
+			{
+				1134,224,1,1
+			}
+			
+	};
 
 	/** void run() = Initialize, set thread sleep time(1000ms / frames per second), and run the game */
 	public void run() {
@@ -83,33 +107,7 @@ public class DrawHandler extends JFrame implements Runnable {
 		imageLoader();
 
 	}
-	private BufferedImage drawPlayerHand() {
-		BufferedImage backBufferHand = new BufferedImage(windowWidth, windowHeight,
-				+BufferedImage.TYPE_INT_RGB);
-		
-		Graphics bbg = backBufferHand.getGraphics();
-		int arraySize = main.playerDeck.inHand.size();
-		for(int i = 0; i < arraySize; i++) {
-			int rarity = main.playerDeck.getCard(i).getRarity();
-			if(main.playerDeck.getCard(i).getShowBack()) {
-				bbg.drawImage(backCard, 215 + (95*i), 647, this);
-			} else {
-				switch(rarity) {
-				case 0:		bbg.drawImage(commonCard, 215 + (95*i), 647, this);
-							break;
-				case 1:		bbg.drawImage(uncommonCard, 215 + (95*i), 647, this);
-							break;
-				case 2: 	bbg.drawImage(rareCard, 215 + (95*i), 647, this);
-							break;
-				case 3:		bbg.drawImage(godlyCard, 215 + (95*i), 647, this);
-							break;
-				case 4:		bbg.drawImage(legendaryCard, 215 + (95*i), 647, this);
-							break;
-			}	
-			}
-		}
-		return backBufferHand;
-	}
+
 	/** void draw() = Draws all non-static objects */
 	void draw() {
 		Graphics g = getGraphics();
@@ -118,15 +116,55 @@ public class DrawHandler extends JFrame implements Runnable {
 
 		bbg.setColor(Color.WHITE);
 		bbg.fillRect(0, 0, windowWidth, windowHeight);
-
 		bbg.setColor(Color.BLACK);
 		bbg.drawImage(playField, 0, 0, this);
-		bbg.drawImage(drawPlayerHand(), 0,0, this);
+		
+		//buttons
+		for(int i = 0; i < buttons.length; i++){
+			if (buttons[i][2] == 1 ){
+				bbg.fillRoundRect(buttons[i][0], buttons[i][1] , 100, 40, 10, 10);
+			}
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//cards
+		if(main.playerDeck.deck.size() != 0) {
+			bbg.drawImage(backCard, 55, 560, this);
+		}
+		int arraySize = main.playerDeck.inHand.size();
+		for(int i = 0; i < arraySize; i++) {
+			int rarity = main.playerDeck.getCard(i).getRarity();
+			if(main.playerDeck.getCard(i).getShowBack()) {
+				bbg.drawImage(backCard, 215 + (95*i), 674, this);
+			} else {
+				switch(rarity) {
+				case 0:		bbg.drawImage(commonCard, 215 + (95*i),  674, this);
+							break;
+				case 1:		bbg.drawImage(uncommonCard, 215 + (95*i),  674, this);
+							break;
+				case 2: 	bbg.drawImage(rareCard, 215 + (95*i),  674, this);
+							break;
+				case 3:		bbg.drawImage(godlyCard, 215 + (95*i),  674, this);
+							break;
+				case 4:		bbg.drawImage(legendaryCard, 215 + (95*i),  674, this);
+							break;
+			}	
+			}
+			
+		}
 		bbg.setColor(Color.RED);
 		//drawRemainingDeck
-		if(main.playerDeck.deck.size() != 0) {
-			bbg.drawImage(backCard, 1137, 563, this);
-		}
+		
 				
 		g.drawImage(backBuffer, insets.left, insets.top, this);
 	}

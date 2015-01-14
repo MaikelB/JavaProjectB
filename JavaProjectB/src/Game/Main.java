@@ -30,6 +30,7 @@ public class Main implements MouseListener{
 		FileHandler fileHandler = new FileHandler();
 		try {
 			fileHandler.loadDeck("deck1", true);
+			fileHandler.loadDeck("deck2", false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

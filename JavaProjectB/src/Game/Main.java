@@ -58,27 +58,24 @@ public class Main implements MouseListener {
 		playerDeck.drawCard();
 		playerDeck.drawCard();
 		playerDeck.drawCard();
+		playerDeck.drawCard();
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
-
 
 	}
 
 	public void run() {
 		(new Thread(new DrawHandler())).start();
 		(new Thread(new AI())).start();
-		
+
 		initialize();
 		while (isRunning) {
 			long time = System.currentTimeMillis();
 			// Main menu
 			update(gameState);
 
-			
-			
-			
 			time = (1000 / fps) - (System.currentTimeMillis() - time);
 
 			if (time > 0) {
@@ -123,15 +120,15 @@ public class Main implements MouseListener {
 		}
 	}
 
-	private void pullCard() {
-		if(gameState == 1){
-			
+	private static void pullCard() {
+		if (gameState == 1) {
+			playerDeck.drawCard();
 		}
-		if(gameState == 2){
-			
+		if (gameState == 2) {
+			enemyDeck.drawCard();
 		}
 	}
-	
+
 	private void playCard() {
 		for (int i = 0; i < playerDeck.inHand.size(); i++) {
 			if (inHandBoxes[i][1] == 1) {
@@ -176,31 +173,31 @@ public class Main implements MouseListener {
 	}
 
 	public static void playEnemyCard() {
-			if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(0))) {
-				if (enemyDeck.getHandCard(0).getSpecial() == 2) {
-					int tableSize = enemyDeck.onTable.size();
-					for (int a = 0; a < tableSize; a++) {
-						enemyDeck.onTable.get(a).buffDefense(1);
-					}
-				} else if (enemyDeck.getHandCard(0).getSpecial() == 3) {
-					int tableSize = enemyDeck.onTable.size();
-					for (int b = 0; b < tableSize; b++) {
-						enemyDeck.onTable.get(b).buffAttack(1);
-					}
-				} else if (enemyDeck.getHandCard(0).getSpecial() == 4) {
-					int tableSize = enemyDeck.onTable.size();
-					int extraAttack = 0;
-					for (int d = 0; d < tableSize; d++) {
-						if (enemyDeck.onTable.get(d).getSpecial() == 1) {
-							extraAttack += 1;
-						}
-					}
-					enemyDeck.getHandCard(0).buffAttack(extraAttack);
-
+		if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(0))) {
+			if (enemyDeck.getHandCard(0).getSpecial() == 2) {
+				int tableSize = enemyDeck.onTable.size();
+				for (int a = 0; a < tableSize; a++) {
+					enemyDeck.onTable.get(a).buffDefense(1);
 				}
-				enemyDeck.cardPlay(0);
+			} else if (enemyDeck.getHandCard(0).getSpecial() == 3) {
+				int tableSize = enemyDeck.onTable.size();
+				for (int b = 0; b < tableSize; b++) {
+					enemyDeck.onTable.get(b).buffAttack(1);
+				}
+			} else if (enemyDeck.getHandCard(0).getSpecial() == 4) {
+				int tableSize = enemyDeck.onTable.size();
+				int extraAttack = 0;
+				for (int d = 0; d < tableSize; d++) {
+					if (enemyDeck.onTable.get(d).getSpecial() == 1) {
+						extraAttack += 1;
+					}
+				}
+				enemyDeck.getHandCard(0).buffAttack(extraAttack);
+
 			}
-		
+			enemyDeck.cardPlay(0);
+		}
+
 	}
 
 	public static void buttonClickEnemy(int i) {
@@ -221,11 +218,6 @@ public class Main implements MouseListener {
 			break;
 		}
 	}
-	
-	public static void endEnemyTurn(){
-		gameState = 1;
-		Player.setMana(Player.getMana()+10);
-	}
 
 	private void buttonClickBoxes(int x, int y) {
 		for (int i = 0; i < DrawHandler.buttons.length; i++) {
@@ -245,7 +237,8 @@ public class Main implements MouseListener {
 				case 2: /* attackCard(); */
 					System.out.println("buttoncheck attack");
 					break;
-				case 3: endTurn();
+				case 3:
+					endTurn();
 					System.out.println("buttoncheck end");
 					break;
 
@@ -254,11 +247,18 @@ public class Main implements MouseListener {
 		}
 	}
 
-	private void endTurn(){
-		gameState = 2;
-		Enemy.setMana(Enemy.getMana()+10);
+	public static void endEnemyTurn() {
+		gameState = 1;
+		Player.setMana(Player.getMana() + 10);
+		pullCard();
 	}
-	
+
+	private void endTurn() {
+		gameState = 2;
+		Enemy.setMana(Enemy.getMana() + 10);
+		pullCard();
+	}
+
 	private void clearSelected() {
 		for (int i = 0; i < 9; i++) {
 			inHandBoxes[i][1] = 0;

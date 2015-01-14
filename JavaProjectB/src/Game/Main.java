@@ -18,6 +18,7 @@ public class Main implements MouseListener{
 	/*
 	 * arrays for the mouse hover and click-boxes
 	 */
+	static public int[][] enemyInHand = new int[9][2];
 	static public int[][] inHandBoxes = new int[9][2];
 	static public int[][] playerOnTableBoxes = new int[9][2];
 	static public int[][] playerOnSpellsBoxes = new int[2][2];
@@ -60,6 +61,10 @@ public class Main implements MouseListener{
 		playerDeck.drawCard();
 		playerDeck.drawCard();
 		playerDeck.drawCard();
+		enemyDeck.drawCard();
+		enemyDeck.drawCard();
+		enemyDeck.drawCard();
+		enemyDeck.drawCard();
 	
 	}
 	
@@ -141,7 +146,18 @@ public class Main implements MouseListener{
 			}
 		}
 	
-	private void playEnemyCard() {
+	public void enemyAttack(int i){
+		
+	}
+	public void enemyEnd(){
+		
+	}
+	
+	public void selectCard(int i){
+		enemyInHand[i][1] = 1;
+	}
+	
+	public void playEnemyCard() {
 		for (int i = 0; i < enemyDeck.inHand.size(); i++) {
 
 			if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {

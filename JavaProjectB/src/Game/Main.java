@@ -92,6 +92,7 @@ public class Main implements MouseListener{
 		for(int i = 0; i < inHandBoxes.length; i++) {
 			if(inHandBoxes[i][1]==1) {
 					playerDeck.cardPlay(i);
+					clearSelected();
 			}
 		}
 	}

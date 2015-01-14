@@ -29,7 +29,7 @@ public class Enemy {
 	}
 	public void setHero(int he){
 		hero = he;
-		he = (int) Math.random()*3 + 1;
+		he = (int) Math.random()*1 + 1;
 	}
 	public int getHere(){
 		return hero;

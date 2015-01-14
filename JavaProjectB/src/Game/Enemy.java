@@ -1,25 +1,29 @@
 package Game;
 
 public class Enemy {
-	private int health, mana;
+	private int health=20, mana=10;
 
 	public Enemy(int hp, int ma){
 		health = hp;
 		mana = ma;
 	}
 	
-	public int Health(){
-		health = 20;
+	public int getHealth(){
 		return health;
 	}
-	public int Mana(){
-		mana = 10;
+	public int getMana(){
+		return mana;
+	}
+	public void setHealth(){
+		
+	}
+	public void setMana(){
 		if (mana >40){
 			mana = 40;
 		}
 		//if (next turn){
 		//mana = mana+10;
 		//}
-		return mana;
 	}
+	
 }

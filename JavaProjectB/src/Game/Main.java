@@ -84,11 +84,25 @@ public class Main implements MouseListener{
 			
 		}
 		if( gameS == 1){
+			playerDeck.notPlayable.clear();
+			int arraySize = playerDeck.inHand.size();
+			for (int i = 0; i < arraySize; i++) {
+				if(playerDeck.onSpells.size() >= 2 && playerDeck.inHand.get(i).getRarity() == 4) {
+					playerDeck.notPlayable.add(playerDeck.inHand.get(i));
+				}
+			}
+			
 			playerBoxes();
 			
 		}
 		if (gameS == 2){
-			
+			enemyDeck.notPlayable.clear();
+			int arraySize = enemyDeck.inHand.size();
+			for (int i = 0; i < arraySize; i++) {
+				if(enemyDeck.onSpells.size() >= 2 && enemyDeck.inHand.get(i).getRarity() == 4) {
+					enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
+				}
+			}
 		}
 	}
 	private void playCard() {
@@ -96,27 +110,40 @@ public class Main implements MouseListener{
 			if(inHandBoxes[i][1]==1) {
 					if(playerDeck.getHandCard(i).getSpecial() == 2){
 						int tableSize = playerDeck.onTable.size();
-						for(i = 0; i < tableSize; i++) {
-							playerDeck.onTable.get(i).buffDefense(1);
+						for(int a = 0; a < tableSize; a++) {
+							playerDeck.onTable.get(a).buffDefense(1);
 						}
 					}
 					else if(playerDeck.getHandCard(i).getSpecial() == 3){
 						int tableSize = playerDeck.onTable.size();
-						for(i = 0; i < tableSize; i++) {
-							playerDeck.onTable.get(i).buffAttack(1);
+						for(int b = 0; b < tableSize; b++) {
+							playerDeck.onTable.get(b).buffAttack(1);
 						}
 					}
 					else if(playerDeck.getHandCard(i).getSpecial() == 5){
 						int tableSize = playerDeck.onTable.size();
-						for(i = 0; i < tableSize; i++) {
-							if(playerDeck.onTable.get(i).getSpecial() == 5)
-								{
-									
-								}
+						for(int c = 0; c < tableSize; c++) {
+							if(playerDeck.onTable.get(c).getSpecial() != 5)
+							{
+								playerOnTableBoxes[c][0] = 0;
+							} else {
+								playerOnTableBoxes[c][0] = 1;
 							}
 						}
+					}
+					else if(playerDeck.getHandCard(i).getSpecial() == 4) {
+						int tableSize = playerDeck.onTable.size();
+						int extraAttack = 0;
+						for(int d = 0; d < tableSize; d++) {
+							if(playerDeck.onTable.get(d).getSpecial() == 1) {
+								extraAttack += 1;
+							}
+						}
+						playerDeck.getHandCard(i).buffAttack(extraAttack);
+						
+					}
 					playerDeck.cardPlay(i);
-					clearSelected();
+					clearSelected();					
 					}
 
 			}

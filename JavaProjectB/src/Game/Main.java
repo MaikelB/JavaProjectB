@@ -8,10 +8,11 @@ import java.io.IOException;
 public class Main implements MouseListener {
 	private int fps = 60;
 	private boolean isRunning = true;
+	public static boolean myTurn = false;
 	public static Deck playerDeck = null;
 	public static Deck enemyDeck = null;
 	private int[] buttonSize = { 100, 40 };
-	public static int gameState = 2;
+	public static int gameState = 1;
 	/*
 	 * arrays for the mouse hover and click-boxes
 	 */
@@ -79,6 +80,7 @@ public class Main implements MouseListener {
 
 			
 			
+			
 			time = (1000 / fps) - (System.currentTimeMillis() - time);
 
 			if (time > 0) {
@@ -95,6 +97,8 @@ public class Main implements MouseListener {
 
 		}
 		if (gameS == 1) {
+			myTurn = true;
+			AI.enemyTurn = false;
 			playerDeck.notPlayable.clear();
 			int arraySize = playerDeck.inHand.size();
 			for (int i = 0; i < arraySize; i++) {
@@ -108,6 +112,8 @@ public class Main implements MouseListener {
 
 		}
 		if (gameS == 2) {
+			AI.enemyTurn = true;
+			myTurn = false;
 			enemyDeck.notPlayable.clear();
 			int arraySize = enemyDeck.inHand.size();
 			for (int i = 0; i < arraySize; i++) {
@@ -204,10 +210,15 @@ public class Main implements MouseListener {
 		case 2: /* attackEnemyCard(); */
 			System.out.println("buttoncheck enemy attack");
 			break;
-		case 3: /* endEnemyTurn(); */
+		case 3:
+			endEnemyTurn();
 			System.out.println("buttoncheck enemy end");
 			break;
 		}
+	}
+	
+	public static void endEnemyTurn(){
+		gameState = 1;
 	}
 
 	private void buttonClickBoxes(int x, int y) {
@@ -228,7 +239,7 @@ public class Main implements MouseListener {
 				case 2: /* attackCard(); */
 					System.out.println("buttoncheck attack");
 					break;
-				case 3: /* endTurn(); */
+				case 3: endTurn();
 					System.out.println("buttoncheck end");
 					break;
 
@@ -237,6 +248,10 @@ public class Main implements MouseListener {
 		}
 	}
 
+	private void endTurn(){
+		gameState = 2;
+	}
+	
 	private void clearSelected() {
 		for (int i = 0; i < 9; i++) {
 			inHandBoxes[i][1] = 0;

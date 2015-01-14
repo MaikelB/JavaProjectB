@@ -11,7 +11,7 @@ public class Main implements MouseListener {
 	public static Deck playerDeck = null;
 	public static Deck enemyDeck = null;
 	private int[] buttonSize = { 100, 40 };
-	public static int gameState = 1;
+	public static int gameState = 2;
 	/*
 	 * arrays for the mouse hover and click-boxes
 	 */
@@ -54,8 +54,6 @@ public class Main implements MouseListener {
 
 		}
 
-		
-		
 		playerDeck.drawCard();
 		playerDeck.drawCard();
 		playerDeck.drawCard();
@@ -66,18 +64,21 @@ public class Main implements MouseListener {
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
 		enemyDeck.drawCard();
-
 
 	}
 
 	public void run() {
 		(new Thread(new DrawHandler())).start();
+		(new Thread(new AI())).start();
+		
 		initialize();
 		while (isRunning) {
 			long time = System.currentTimeMillis();
 			// Main menu
 			update(gameState);
 
+			
+			
 			time = (1000 / fps) - (System.currentTimeMillis() - time);
 
 			if (time > 0) {
@@ -149,19 +150,19 @@ public class Main implements MouseListener {
 		}
 	}
 
-	public void enemyAttack() {
+	public static void enemyAttack() {
 		buttonClickEnemy(2);
 	}
 
-	public void enemyEnd() {
+	public static void enemyEnd() {
 		buttonClickEnemy(3);
 	}
 
-	public void selectCard(int i) {
+	public static void selectCard(int i) {
 		enemyInHand[i][1] = 1;
 	}
 
-	public void playEnemyCard() {
+	public static void playEnemyCard() {
 		for (int i = 0; i < enemyDeck.inHand.size(); i++) {
 
 			if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
@@ -191,7 +192,7 @@ public class Main implements MouseListener {
 		}
 	}
 
-	public void buttonClickEnemy(int i) {
+	public static void buttonClickEnemy(int i) {
 		switch (i) {
 		case 0: /* chooseEnemyHero(); */
 			System.out.println("buttoncheck enemy hero");

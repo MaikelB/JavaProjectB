@@ -8,14 +8,14 @@ Please be careful with changing this file.
 	{
 		Card_name = Living Wall
 		Card_description = A moving wall made out of arms.
-		Card_stats = 1 : 6
+		Card_stats = 2 : 6
 		Card_special = 5
 		Card_rarity = 2
 	}
 	{
 		Card_name = Crawler
 		Card_description = These Human-like creatures are mostly found in caves and kill anything they find.
-		Card_stats = 2 : 3
+		Card_stats = 2 : 1
 		Card_special = 0
 		Card_rarity = 0
 	
@@ -23,7 +23,7 @@ Please be careful with changing this file.
 	{
 		Card_name = Crawler
 		Card_description = These Human-like creatures are mostly found in caves and kill anything they find.
-		Card_stats = 2 : 3
+		Card_stats = 2 : 1
 		Card_special = 0
 		Card_rarity = 0
 	
@@ -31,7 +31,7 @@ Please be careful with changing this file.
 	{
 		Card_name = Crawler
 		Card_description = These Human-like creatures are mostly found in caves and kill anything they find.
-		Card_stats = 2 : 3
+		Card_stats = 2 : 1
 		Card_special = 0
 		Card_rarity = 0
 	
@@ -53,14 +53,14 @@ Please be careful with changing this file.
 	{
 		Card_name = Jiangshi minion
 		Card_description = Humans who were bitten by Jiangshi turn into their minions to do their bidding.
-		Card_stats = 3 : 2
+		Card_stats = 2 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}
 	{
 		Card_name = Jiangshi minion
 		Card_description = Humans who were bitten by Jiangshi turn into their minions to do their bidding.
-		Card_stats = 3 : 2
+		Card_stats = 2 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}
@@ -81,7 +81,7 @@ Please be careful with changing this file.
 	{
 		Card_name = Fallen Angel
 		Card_description = This angel has fallen from heaven after giving in to temptation.
-		Card_stats = 6 : 3
+		Card_stats = 6 : 4
 		Card_special = 0
 		Card_rarity = 3
 	}
@@ -137,15 +137,15 @@ Please be careful with changing this file.
 	{
 		Card_name = The Wicked Hermit Who Passes Through Walls
 		Card_description = This is the Taoist who is behind the living dead with her taboo arts.
-		Card_stats = 3 : 6
+		Card_stats = 4 : 6
 		Card_special = 1
 		Card_rarity = 4
 	}
 	{
 		Card_name = Living Wall
 		Card_description = A moving wall made out of arms.
-		Card_stats = 1 : 6
+		Card_stats = 2 : 6
 		Card_special = 5
-		Card_rarity = 3
+		Card_rarity = 2
 	}
 };

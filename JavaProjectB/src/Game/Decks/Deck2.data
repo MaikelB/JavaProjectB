@@ -8,35 +8,35 @@ Please be careful with changing this file.
 	{
 		Card_name = Justicar
 		Card_description = The Justicar lives to defend its allies
-		Card_stats = 1 : 6
+		Card_stats = 2 : 6
 		Card_special = 2
 		Card_rarity = 2
 	}
 	{
 		Card_name = Justicar
 		Card_description = The Justicar lives to defend its allies.
-		Card_stats = 1 : 6
+		Card_stats = 2 : 6
 		Card_special = 2
 		Card_rarity = 2
 	}
 	{
 		Card_name = Whisp
 		Card_description = Get too close and get zapped.
-		Card_stats = 4 : 1
+		Card_stats = 4 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}
 	{
 		Card_name = Whisp
 		Card_description = Get too close and get zapped.
-		Card_stats = 4 : 1
+		Card_stats = 4 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}
 	{
 		Card_name = Whisp
 		Card_description = Get too close and get zapped.
-		Card_stats = 4 : 1
+		Card_stats = 4 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}
@@ -50,14 +50,14 @@ Please be careful with changing this file.
 	{
 		Card_name = Angel
 		Card_description = Creatures of the heavens, extensively trained in combat to counter the demon rise.
-		Card_stats = 5 : 1
+		Card_stats = 5 : 3
 		Card_special = 0
 		Card_rarity = 2
 	}
 	{
 		Card_name = Angel
 		Card_description = Creatures of the heavens, extensively trained in combat to counter the demon rise.
-		Card_stats = 5 : 1
+		Card_stats = 5 : 3
 		Card_special = 0
 		Card_rarity = 2
 	}
@@ -78,7 +78,7 @@ Please be careful with changing this file.
 	{
 		Card_name = True Excalibur
 		Card_description = The sword of legends must not be trifled with by mortals.
-		Card_stats = 6 : 1
+		Card_stats = 6 : 2
 		Card_special = 2
 		Card_rarity = 3
 	}
@@ -127,14 +127,14 @@ Please be careful with changing this file.
 	{
 		Card_name = Stable Singularity
 		Card_description = Stronger than his unstable brother, and less annoying.
-		Card_stats = 4 : 1
+		Card_stats = 4 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}
 	{
 		Card_name = Stable Singularity
 		Card_description = Stronger than his unstable brother, and less annoying.
-		Card_stats = 4 : 1
+		Card_stats = 4 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}

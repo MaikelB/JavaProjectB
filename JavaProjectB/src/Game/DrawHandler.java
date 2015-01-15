@@ -54,9 +54,10 @@ public class DrawHandler extends JFrame implements Runnable {
 	private BufferedImage heroLight = null;
 	private BufferedImage buttonImage = null;
 	private BufferedImage heroDark = null;
-	/*
-	 * int array for buttons to be drawn.
+	/**
+	 * int[][] array for buttons to be drawn.
 	 * x,y,active,tasks.
+	 * active can be 0 or 1;
 	 * tasks:
 	 * 0 = selecting hero
 	 * 1 = placing on board
@@ -82,7 +83,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			
 	};
 
-	/** void run() = Initialize, set thread sleep time(1000ms / frames per second), and run the game */
+	/** void run() = Initialize, set thread sleep time(1000ms / frames per second) */
 	public void run() {
 		initialize();
 		while (isRunning) {
@@ -101,7 +102,8 @@ public class DrawHandler extends JFrame implements Runnable {
 		setVisible(false);
 	}
 	
-	/** void initialize() = sets the game variables (title, insets, size, backbuffer, main, images) */
+	/** void initialize() = sets the game variables (title, insets, size, backbuffer, main, images)
+	 */
 	void initialize() {
 		setTitle(gameTitle);
 		setResizable(false);
@@ -117,7 +119,10 @@ public class DrawHandler extends JFrame implements Runnable {
 
 	}
 
-	/** void draw() = Draws all non-static objects */
+	/** void draw() = 
+	 * 	Draws everything on screen. 
+	 *  it Build up a full image of the screen before drawing it on the screen.
+	 *  */
 	void draw() {
 		Graphics g = getGraphics();
 
@@ -149,12 +154,6 @@ public class DrawHandler extends JFrame implements Runnable {
 		//Mana display
 		bbg.drawString("" + Enemy.getMana() + "/40", 1005, 150);
 		bbg.drawString("" + Player.getMana() + "/40", 1005, 625);
-		
-		
-		
-		
-		
-		
 		
 		//cards
 		int arraySize;
@@ -219,6 +218,7 @@ public class DrawHandler extends JFrame implements Runnable {
 				bbg.drawString(s1, 290 + (95*i), 295);
 			}
 		}
+		
 		//enemy spells
 		arraySize = main.enemyDeck.onSpells.size();
 		for(int i = 0; i < arraySize; i++) {
@@ -265,8 +265,6 @@ public class DrawHandler extends JFrame implements Runnable {
 				
 			}	
 		}
-		
-		
 		
 		//player deck
 		if(main.playerDeck.deck.size() != 0) {
@@ -318,6 +316,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		
 		//player table
 		arraySize = main.playerDeck.onTable.size();
 		for(int i = 0; i < arraySize; i++) {
@@ -364,6 +363,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		
 		//player spells
 		arraySize = main.playerDeck.onSpells.size();
 		for(int i = 0; i < arraySize; i++) {
@@ -410,8 +410,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			bbg.drawString(s1, 90 + (95*i), 475);
 		}
 		
-		//sellection draw
-		//bbg.setColor(Color.RED);
+		//selection draw
 		arraySize = main.playerDeck.inHand.size();
 		for (int i = 0; i < arraySize; i++){
 			if(Main.inHandBoxes[i][1] == 1){
@@ -456,21 +455,6 @@ public class DrawHandler extends JFrame implements Runnable {
 				bbg.drawString(s1, 690 , 405);
 				s1 = "Mana: " + Main.playerDeck.getHandCard(i).getManaCost();
 				bbg.drawString(s1, windowWidth/2-90+17 , 435);
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				bbg.setFont(new Font("TimesRoman", Font.PLAIN, 11));
 			}
 			
@@ -484,6 +468,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		
 		arraySize = main.enemyDeck.onTable.size();
 		for (int i = 0; i < arraySize; i++){
 			if(Main.enemyOnTableBoxes[i][1] == 1){
@@ -492,6 +477,8 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		
+		//Hero icons draw
 		switch(Main.enemyDeck.deck_name){
 			case "Guardian Earth":
 				bbg.drawImage(heroEarth,582,62,this); 
@@ -503,6 +490,7 @@ public class DrawHandler extends JFrame implements Runnable {
 				bbg.drawImage(heroDark,582,62,this); 
 				break;
 		}
+		
 		switch(Main.playerDeck.deck_name){
 		case "Guardian Earth":
 			bbg.drawImage(heroEarth,582,540,this); 
@@ -515,10 +503,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			break;
 		}
 		
-		
-		
-		
-				
+		//Draws the image drawn on the backBuffer on to the screen.
 		g.drawImage(backBuffer, insets.left, insets.top, this);
 	}
 	

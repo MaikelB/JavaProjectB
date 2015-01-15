@@ -91,29 +91,34 @@ public class Main implements MouseListener {
 		int arraySize = playerDeck.inHand.size();
 		playerDeck.notPlayable.clear();
 		for (int i = 0; i < arraySize; i++) {
-			int mana = Player.getMana()-playerDeck.getHandCard(i).getManaCost();
+			int mana = Player.getMana()
+					- playerDeck.getHandCard(i).getManaCost();
 			if (playerDeck.onSpells.size() >= 2
 					&& playerDeck.inHand.get(i).getSpecial() == 4) {
 				playerDeck.notPlayable.add(playerDeck.inHand.get(i));
-			} if (mana < 0)
-			{
+			}
+			if (mana < 0) {
 				playerDeck.notPlayable.add(playerDeck.inHand.get(i));
-			} if (playerDeck.inHand.get(i).getSpecial() != 4 && playerDeck.onTable.size() >= 9) {
+			}
+			if (playerDeck.inHand.get(i).getSpecial() != 4
+					&& playerDeck.onTable.size() >= 9) {
 				playerDeck.notPlayable.add(playerDeck.inHand.get(i));
 			}
 		}
-		
-		arraySize = enemyDeck.inHand.size();
+
+		int arrayEnemySize = enemyDeck.inHand.size();
 		enemyDeck.notPlayable.clear();
-		for (int i = 0; i < arraySize; i++) {
-			int mana = Enemy.getMana()-enemyDeck.getHandCard(i).getManaCost();
+		for (int i = 0; i < arrayEnemySize; i++) {
+			int mana = Enemy.getMana() - enemyDeck.getHandCard(i).getManaCost();
 			if (enemyDeck.onSpells.size() >= 2
 					&& enemyDeck.inHand.get(i).getSpecial() == 4) {
 				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
-			} if (mana < 0)
-			{
-				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
-			} if (enemyDeck.inHand.get(i).getSpecial() != 4 && enemyDeck.onTable.size() >= 9) {
+			} /*
+			 * if (mana < 0) {
+			 * enemyDeck.notPlayable.add(enemyDeck.inHand.get(i)); }
+			 */
+			if (enemyDeck.inHand.get(i).getSpecial() != 4
+					&& enemyDeck.onTable.size() >= 9) {
 				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
 			}
 		}
@@ -123,7 +128,7 @@ public class Main implements MouseListener {
 		if (gameS == 1) {
 			myTurn = true;
 			AI.enemyTurn = false;
-			
+
 			playerBoxes();
 
 		}
@@ -131,7 +136,7 @@ public class Main implements MouseListener {
 			AI.enemyTurn = true;
 			myTurn = false;
 			enemyDeck.notPlayable.clear();
-			
+
 		}
 	}
 
@@ -145,8 +150,10 @@ public class Main implements MouseListener {
 	}
 
 	private void playCard() {
-		for (int i = 0; i < playerDeck.inHand.size(); i++) {			
-			if (inHandBoxes[i][1] == 1 && !playerDeck.notPlayable.contains(playerDeck.inHand.get(i))) {
+		for (int i = 0; i < playerDeck.inHand.size(); i++) {
+			if (inHandBoxes[i][1] == 1
+					&& !playerDeck.notPlayable.contains(playerDeck.inHand
+							.get(i))) {
 				if (playerDeck.getHandCard(i).getSpecial() == 2) {
 					int tableSize = playerDeck.onTable.size();
 					for (int a = 0; a < tableSize; a++) {
@@ -170,7 +177,7 @@ public class Main implements MouseListener {
 				}
 				int cost = playerDeck.getHandCard(i).getManaCost();
 				playerDeck.cardPlay(i);
-				Player.setMana(Player.getMana()-cost);
+				Player.setMana(Player.getMana() - cost);
 				clearSelected();
 			}
 
@@ -178,7 +185,7 @@ public class Main implements MouseListener {
 	}
 
 	public static void enemyAttack() {
-		
+
 	}
 
 	public static void enemyEnd() {
@@ -190,7 +197,14 @@ public class Main implements MouseListener {
 	}
 
 	public static void playEnemyCard(int i) {
-		if (enemyInHand[i][1] == 1 && !enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
+		if (enemyInHand[i][1] == 1
+				&& !enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
+
+		}
+		int cost = enemyDeck.getHandCard(i).getManaCost();
+		int mana = Enemy.getMana() - cost;
+		System.out.println("Future mana " + mana);
+		if (mana >= 0) {
 			if (enemyDeck.getHandCard(i).getSpecial() == 2) {
 				int tableSize = enemyDeck.onTable.size();
 				for (int a = 0; a < tableSize; a++) {
@@ -212,14 +226,15 @@ public class Main implements MouseListener {
 				enemyDeck.getHandCard(i).buffAttack(extraAttack);
 
 			}
-			int cost = enemyDeck.getHandCard(i).getManaCost();
+
 			enemyDeck.cardPlay(i);
-			Enemy.setMana(Enemy.getMana()-cost);
-			
+			Enemy.setMana(Enemy.getMana() - cost);
+
+			System.out.println(Enemy.getMana());
+
 		}
 
 	}
-
 
 	private void buttonClickBoxes(int x, int y) {
 		for (int i = 0; i < DrawHandler.buttons.length; i++) {

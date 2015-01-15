@@ -233,7 +233,31 @@ public class Main implements MouseListener {
 		}
 
 	}
-
+	
+	private void attackCard() {
+		int playerMinionAttack = 0;
+		int playerMinionHealth = 0;
+		int playerMinionIndex = 0;
+		for(int a = 0; a < playerOnTableBoxes.length; a++) {
+			if(playerOnTableBoxes[a][1] == 1) {
+				playerMinionAttack = playerDeck.getOnTable(a).getAttack();
+				playerMinionHealth = playerDeck.getOnTable(a).getDefense();	
+				playerMinionIndex = a;
+			}
+		}
+		int enemyMinionHP = 0;
+		int enemyMinionAtt = 0;
+		for(int i = 0; i < enemyOnTableBoxes.length; i++) {
+			if(enemyOnTableBoxes[i][1] == 1) {
+				enemyMinionHP = enemyDeck.getOnTable(i).getDefense();
+				enemyMinionAtt = enemyDeck.getOnTable(i).getAttack();
+				
+				enemyDeck.getOnTable(i).debuffDefense(playerMinionAttack);
+				playerDeck.getOnTable(playerMinionIndex).debuffDefense(enemyMinionAtt);
+				System.out.println(enemyDeck.getOnTable(i).getAttack());
+			}
+		}
+	}
 	private void buttonClickBoxes(int x, int y) {
 		for (int i = 0; i < DrawHandler.buttons.length; i++) {
 			if (x > DrawHandler.buttons[i][0]
@@ -249,7 +273,7 @@ public class Main implements MouseListener {
 					playCard();
 					System.out.println("buttoncheck play");
 					break;
-				case 2: /* attackCard(); */
+				case 2:  attackCard(); 
 					System.out.println("buttoncheck attack");
 					break;
 				case 3:
@@ -297,9 +321,12 @@ public class Main implements MouseListener {
 				System.out.println("inhandbox: " + i);
 				if (inHandBoxes[i][1] == 1) {
 					inHandBoxes[i][1] = 0;
+					DrawHandler.buttons[3][2] = 0;
 				} else {
 					clearSelected();
 					inHandBoxes[i][1] = 1;
+					DrawHandler.buttons[3][2] = 1;
+					DrawHandler.buttons[3][3] = 1;
 				}
 
 			}
@@ -312,9 +339,12 @@ public class Main implements MouseListener {
 
 				if (playerOnTableBoxes[i][1] == 1) {
 					playerOnTableBoxes[i][1] = 0;
+					DrawHandler.buttons[3][2] = 0;
 				} else {
 					clearSelected();
 					playerOnTableBoxes[i][1] = 1;
+					DrawHandler.buttons[3][3] = 2;
+					DrawHandler.buttons[3][2] = 1;
 				}
 
 			}

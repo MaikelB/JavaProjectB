@@ -198,38 +198,38 @@ public class Main implements MouseListener {
 		if (enemyInHand[i][1] == 1
 				&& !enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
 
-		}
-		int cost = enemyDeck.getHandCard(i).getManaCost();
-		int mana = Enemy.getMana() - cost;
-		System.out.println("Future mana " + mana);
-		if (mana >= 0) {
-			if (enemyDeck.getHandCard(i).getSpecial() == 2) {
-				int tableSize = enemyDeck.onTable.size();
-				for (int a = 0; a < tableSize; a++) {
-					enemyDeck.onTable.get(a).buffDefense(1);
-				}
-			} else if (enemyDeck.getHandCard(i).getSpecial() == 3) {
-				int tableSize = enemyDeck.onTable.size();
-				for (int b = 0; b < tableSize; b++) {
-					enemyDeck.onTable.get(b).buffAttack(1);
-				}
-			} else if (enemyDeck.getHandCard(i).getSpecial() == 4) {
-				int tableSize = enemyDeck.onTable.size();
-				int extraAttack = 0;
-				for (int d = 0; d < tableSize; d++) {
-					if (enemyDeck.onTable.get(d).getSpecial() == 1) {
-						extraAttack += 1;
+			int cost = enemyDeck.getHandCard(i).getManaCost();
+			int mana = Enemy.getMana() - cost;
+			System.out.println("Future mana " + mana);
+			if (mana >= 0) {
+				if (enemyDeck.getHandCard(i).getSpecial() == 2) {
+					int tableSize = enemyDeck.onTable.size();
+					for (int a = 0; a < tableSize; a++) {
+						enemyDeck.onTable.get(a).buffDefense(1);
 					}
+				} else if (enemyDeck.getHandCard(i).getSpecial() == 3) {
+					int tableSize = enemyDeck.onTable.size();
+					for (int b = 0; b < tableSize; b++) {
+						enemyDeck.onTable.get(b).buffAttack(1);
+					}
+				} else if (enemyDeck.getHandCard(i).getSpecial() == 4) {
+					int tableSize = enemyDeck.onTable.size();
+					int extraAttack = 0;
+					for (int d = 0; d < tableSize; d++) {
+						if (enemyDeck.onTable.get(d).getSpecial() == 1) {
+							extraAttack += 1;
+						}
+					}
+					enemyDeck.getHandCard(i).buffAttack(extraAttack);
+
 				}
-				enemyDeck.getHandCard(i).buffAttack(extraAttack);
+
+				enemyDeck.cardPlay(i);
+				Enemy.setMana(Enemy.getMana() - cost);
+
+				System.out.println(Enemy.getMana());
 
 			}
-
-			enemyDeck.cardPlay(i);
-			Enemy.setMana(Enemy.getMana() - cost);
-
-			System.out.println(Enemy.getMana());
-
 		}
 
 	}

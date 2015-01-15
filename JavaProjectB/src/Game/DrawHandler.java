@@ -450,6 +450,27 @@ public class DrawHandler extends JFrame implements Runnable {
 					s2 = s1;
 					bbg.drawString(s2, windowWidth/2-90+17 , windowHeight/2-120 + 34);
 				}
+				s1 = "" + Main.playerDeck.getHandCard(i).getAttack();
+				bbg.drawString(s1, 600 , 405);
+				s1 = "" + Main.playerDeck.getHandCard(i).getDefense();
+				bbg.drawString(s1, 690 , 405);
+				s1 = "Mana: " + Main.playerDeck.getHandCard(i).getManaCost();
+				bbg.drawString(s1, windowWidth/2-90+17 , 435);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				bbg.setFont(new Font("TimesRoman", Font.PLAIN, 11));
 			}
 			
@@ -472,11 +493,28 @@ public class DrawHandler extends JFrame implements Runnable {
 			
 		}
 		switch(Main.enemyDeck.deck_name){
-		case "Guardian Earth":bbg.drawImage(heroEarth,582,62,this); break;
-		case "Blazing Light":bbg.drawImage(heroLight,582,62,this); break;
-		case "Death Waltz":bbg.drawImage(heroDark,582,62,this); break;
+			case "Guardian Earth":
+				bbg.drawImage(heroEarth,582,62,this); 
+				break;
+			case "Blazing Light":
+				bbg.drawImage(heroLight,582,62,this); 
+				break;
+			case "Death Waltz":
+				bbg.drawImage(heroDark,582,62,this); 
+				break;
 		}
-		bbg.drawImage(heroEarth,582,540,this);
+		switch(Main.playerDeck.deck_name){
+		case "Guardian Earth":
+			bbg.drawImage(heroEarth,582,540,this); 
+			break;
+		case "Blazing Light":
+			bbg.drawImage(heroLight,582,540,this); 
+			break;
+		case "Death Waltz":
+			bbg.drawImage(heroDark,582,540,this); 
+			break;
+		}
+		
 		
 		
 		

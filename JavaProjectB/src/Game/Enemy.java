@@ -39,7 +39,7 @@ public class Enemy {
 	static public int getMana(){
 		return mana;
 	}
-	/** getHero = Returns what hero is picked for the Enemy player.
+	/** getHero = Returns what random hero is picked for the Enemy player.
 	 */
 	static public String getHero(){
 		Random rn = new Random();

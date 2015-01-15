@@ -60,28 +60,28 @@ Please be careful with changing this file.
 	{
 		Card_name = Jiangshi minion
 		Card_description = Humans who were bitten by Jiangshi turn into their minions to do their bidding.
-		Card_stats = 3:2
+		Card_stats = 3 : 2
 		Card_special = 0
 		Card_rarity = 1
 	}
 	{
 		Card_name = Bone wolf
 		Card_description = A revived version of the wolves found in the forest.
-		Card_stats = 4:2
+		Card_stats = 4 : 2
 		Card_special = 0
 		Card_rarity = 3
 	}
 	{
 		Card_name = Bone wolf
 		Card_description = A revived version of the wolves found in the forest.
-		Card_stats = 4:2
+		Card_stats = 4 : 2
 		Card_special = 0
 		Card_rarity = 3
 	}
 	{
 		Card_name = Fallen Angel
 		Card_description = This angel has fallen from heaven after giving in to temptation.
-		Card_stats = 6:3
+		Card_stats = 6 : 3
 		Card_special = 0
 		Card_rarity = 4
 	}

@@ -8,7 +8,7 @@ public class AI implements Runnable {
 	public static boolean enemyTurn = true;
 
 	/** int fps = holds the value of the frames per seconds */
-	private int fps = 60;
+	private int fps = 10;
 
 	Main main;
 

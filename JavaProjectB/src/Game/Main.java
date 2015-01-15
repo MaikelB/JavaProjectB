@@ -120,6 +120,7 @@ public class Main implements MouseListener {
 				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
 			}
 		}
+		checkDie();
 		if (gameS == 0) {
 
 		}
@@ -135,6 +136,18 @@ public class Main implements MouseListener {
 			myTurn = false;
 			enemyDeck.notPlayable.clear();
 
+		}
+	}
+	void checkDie(){
+		for( int i = 0 ; i < playerDeck.onTable.size(); i++){
+			if( playerDeck.onTable.get(i).card_stats[1] < 1){
+				playerDeck.cardDie(i);
+			}
+		}
+		for( int i = 0 ; i < enemyDeck.onTable.size(); i++){
+			if( enemyDeck.onTable.get(i).card_stats[1] < 1){
+				enemyDeck.cardDie(i);
+			}
 		}
 	}
 
@@ -257,6 +270,8 @@ public class Main implements MouseListener {
 				System.out.println(enemyDeck.getOnTable(i).getAttack());
 			}
 		}
+		clearSelected();
+		DrawHandler.buttons[3][2] = 0;
 	}
 	private void buttonClickBoxes(int x, int y) {
 		for (int i = 0; i < DrawHandler.buttons.length; i++) {
@@ -340,11 +355,12 @@ public class Main implements MouseListener {
 				if (playerOnTableBoxes[i][1] == 1) {
 					playerOnTableBoxes[i][1] = 0;
 					DrawHandler.buttons[3][2] = 0;
+					clearSelected();
 				} else {
 					clearSelected();
 					playerOnTableBoxes[i][1] = 1;
 					DrawHandler.buttons[3][3] = 2;
-					DrawHandler.buttons[3][2] = 1;
+					//DrawHandler.buttons[3][2] = 1;
 				}
 
 			}
@@ -356,17 +372,27 @@ public class Main implements MouseListener {
 				System.out.println("enemy onTablebox: " + i);
 				if (enemyOnTableBoxes[i][1] == 1) {
 					enemyOnTableBoxes[i][1] = 0;
+					for (int a = 0; a < 9; a++) {
+						enemyOnTableBoxes[a][1] = 0;
+					}
+					
 				} else {
+					for (int a = 0; a < 9; a++) {
+						enemyOnTableBoxes[a][1] = 0;
+					}
 					enemyOnTableBoxes[i][1] = 1;
+					DrawHandler.buttons[3][2] = 1;
 				}
 			}
 		}
+		
 		// onSpells player
 		for (int i = 0; i < 2; i++) {
 			if (x > 20 + 95 * i && x < 110 + 95 * i && y > 380 && y < 520
 					&& playerOnSpellsBoxes[i][0] == 1) {
 				System.out.println("player onSpells: " + i);
 				if (playerOnSpellsBoxes[i][1] == 1) {
+					clearSelected();
 					playerOnSpellsBoxes[i][1] = 0;
 				} else {
 					clearSelected();
@@ -429,9 +455,35 @@ public class Main implements MouseListener {
 		}
 		return false;
 	}
+	public static boolean boardHasTauntEnemy() {
+		int arrayListSize = enemyDeck.onTable.size();
+		for (int i = 0; i < arrayListSize; i++) {
+			if (enemyDeck.onTable.get(i).getRarity() == 5) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static void playerBoxes() {
-
+		
+		if(DrawHandler.buttons[3][3] == 2){
+			int arrayListSize = enemyDeck.onTable.size();
+			if (!boardHasTauntEnemy() ) {
+				for (int i = 0; i < arrayListSize && arrayListSize != 0; i++) {
+					enemyOnTableBoxes[i][0] = 1;
+				}
+			} else {
+				for (int i = 0; i < arrayListSize && arrayListSize != 0; i++) {
+					if (enemyDeck.onTable.get(i).getSpecial() == 5) {
+						enemyOnTableBoxes[i][0] = 1;
+					} else {
+						enemyOnTableBoxes[i][0] = 0;
+					}
+				}
+			}
+			
+		}
 		int arrayListSize = playerDeck.inHand.size();
 		// System.out.println(arrayListSize);
 		for (int i = 0; i < arrayListSize && arrayListSize != 0; i++) {
@@ -447,7 +499,7 @@ public class Main implements MouseListener {
 			}
 		} else {
 			for (int i = 0; i < arrayListSize && arrayListSize != 0; i++) {
-				if (playerDeck.onTable.get(i).getRarity() == 5) {
+				if (playerDeck.onTable.get(i).getSpecial() == 5) {
 					playerOnTableBoxes[i][0] = 1;
 				} else {
 					playerOnTableBoxes[i][0] = 0;

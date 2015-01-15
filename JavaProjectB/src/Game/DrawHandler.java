@@ -164,7 +164,7 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		//enemy graveyard
 		if(main.enemyDeck.graveyard.size() != 0) {
-			bbg.drawImage(backCard, 1146, 560, this);
+			bbg.drawImage(backCard, 1146, 20, this);
 		}
 		// emeny deck
 		arraySize = main.enemyDeck.inHand.size();
@@ -453,11 +453,20 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		
 		arraySize = main.playerDeck.onTable.size();
 		for (int i = 0; i < arraySize; i++){
 			if(Main.playerOnTableBoxes[i][1] == 1){
 				
 				bbg.drawImage(selectCard, 220 + 95*i, 380, this);
+			}
+			
+		}
+		arraySize = main.enemyDeck.onTable.size();
+		for (int i = 0; i < arraySize; i++){
+			if(Main.enemyOnTableBoxes[i][1] == 1){
+				
+				bbg.drawImage(selectCard, 220 + 95*i, 200, this);
 			}
 			
 		}

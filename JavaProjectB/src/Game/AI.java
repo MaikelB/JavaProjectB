@@ -2,22 +2,21 @@ package Game;
 
 public class AI implements Runnable {
 
-	/** Boolean isRunning = if true, game will be running */
+	/** Boolean isRunning = if true, game will be running. */
 	private boolean isRunning = true;
 
+	/** Boolean enemyTurn = if true, it will be the AI's turn. */
 	public static boolean enemyTurn = true;
 
-	/** int fps = holds the value of the frames per seconds */
+	/** int fps = holds the value of the frames per seconds. */
 	private int fps = 10;
 
+	/** Main main = holds the Thread main. */
 	Main main;
 
-	void initialize() {
-
-	}
-
+	/** run = thread will check if enemy turn and execute enemyPlay() every second while true. */
 	public void run() {
-		initialize();
+
 		while (isRunning) {
 			long time = System.currentTimeMillis();
 			try {
@@ -42,13 +41,16 @@ public class AI implements Runnable {
 		}
 	}
 
-	int enemyInhand;
+	/** int enemyInhand = Initializes enemyInhand for later use. */
+	static int enemyInhand = 0;
 
+	/** getEnemyHand() = sets and return the enemyInhand value. */
 	int getEnemyHand() {
 		enemyInhand = Main.enemyDeck.inHand.size();
 		return enemyInhand;
 	}
 
+	/** Checks if Enemy has cards, if so then runs main loop for AI */
 	void enemyPlay() {
 		if (getEnemyHand() > 0) {
 			for (int i = 0; i < getEnemyHand(); i++) {

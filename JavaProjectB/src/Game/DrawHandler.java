@@ -53,6 +53,7 @@ public class DrawHandler extends JFrame implements Runnable {
 	private BufferedImage heroEarth = null;
 	private BufferedImage heroLight = null;
 	private BufferedImage buttonImage = null;
+	private BufferedImage heroDark = null;
 	/*
 	 * int array for buttons to be drawn.
 	 * x,y,active,tasks.
@@ -470,6 +471,12 @@ public class DrawHandler extends JFrame implements Runnable {
 			}
 			
 		}
+		switch(Main.enemyDeck.deck_name){
+		case "Guardian Earth":bbg.drawImage(heroEarth,582,62,this); break;
+		case "Blazing Light":bbg.drawImage(heroLight,582,62,this); break;
+		case "Death Waltz":bbg.drawImage(heroDark,582,62,this); break;
+		}
+		bbg.drawImage(heroEarth,582,540,this);
 		
 		
 		
@@ -491,6 +498,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			heroEarth = ImageIO.read(getClass().getResourceAsStream("images/Deck1-Hero.png"));
 			heroLight = ImageIO.read(getClass().getResourceAsStream("images/Deck2-Hero.png"));
 			buttonImage = ImageIO.read(getClass().getResourceAsStream("images/Button.png"));
+			heroDark = ImageIO.read(getClass().getResourceAsStream("images/Deck3-Hero.png"));
 		}catch(IOException e){
 			
 		}

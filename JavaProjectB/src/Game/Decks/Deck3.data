@@ -135,7 +135,7 @@ Please be careful with changing this file.
 		Card_rarity = 0
 	}
 	{
-		Card_name = The Hermit Who Passes Through Walls
+		Card_name = The Hermit Who Goes Through Walls
 		Card_description = This is the Taoist who is behind the living dead with her taboo arts.
 		Card_stats = 4 : 6
 		Card_special = 1

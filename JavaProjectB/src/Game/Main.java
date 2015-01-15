@@ -6,15 +6,36 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 
 public class Main implements MouseListener {
+	
+	/** int fps = frames per second */
 	private int fps = 60;
+	
+	/** boolean isRunning = Holds true/false if the threat is running */
 	private boolean isRunning = true;
+	
+	/** boolean myTurn = true if playerturn false if enemyturn */
 	public static boolean myTurn = false;
+	
+	/** Deck playerDeck = deck of the Player */
 	public static Deck playerDeck = null;
+	
+	/** Deck playerDeck = deck of the Enemy */
 	public static Deck enemyDeck = null;
+	
+	/** int[] buttonSize = holds the size of the buttons [0] width [1] height */
 	private int[] buttonSize = { 100, 40 };
+	
+	/** int gameState = holds the gameState (0 = menu, 1 = playerTurn, 2 = enemyTurn */
 	public static int gameState = 1;
-	/*
-	 * arrays for the mouse hover and click-boxes
+	
+	/** int[][] enemyInHand = holds values for active states and selected states of the enemyinHand drawboxes
+	 * int[][] inHandBoxes = holds values for active states and selected states of the playerinHand drawboxes
+	 * int[][] playerOnTableBoxes = holds values for active states and selected states of the playerOnTable drawboxes
+	 * int[][] playerOnSpellsBoxes = holds values for active states and selected states of the playerOnSpells drawboxes
+	 * int[][] enemyOnTableBoxes = holds values for active states and selected states of the enemyOnTable drawboxes
+	 * int[][] heroBoxes = holds values for active states and selected states of the heroBoxes drawboxes
+	 * [i][0] = active/inactive
+	 * [i][1] = selected/deselected
 	 */
 	static public int[][] enemyInHand = new int[9][2];
 	static public int[][] inHandBoxes = new int[9][2];
@@ -22,7 +43,8 @@ public class Main implements MouseListener {
 	static public int[][] playerOnSpellsBoxes = new int[2][2];
 	static public int[][] enemyOnTableBoxes = new int[9][2];
 	static public int[][] heroBoxes = new int[2][2];
-
+	
+	/** void main = Initializes threads and loads decks */
 	public static void main(String[] args) {
 		Main game = new Main();
 		FileHandler fileHandler = new FileHandler();
@@ -36,15 +58,17 @@ public class Main implements MouseListener {
 		game.run();
 
 	}
-
+	
 	public Main() {
 
 	}
-
+	
+	/** main(Component for mouselistener) = adds a mouselistener to the playfield */
 	public Main(Component d) {
 		d.addMouseListener(this);
 	}
-
+	
+	/** void initialize() = draws player cards and initializes the game */
 	private void initialize() {
 		// warning!!! This is is for testing. needs to be edited for release
 		for (int i = 0; i < 9; i++) {
@@ -63,7 +87,8 @@ public class Main implements MouseListener {
 		enemyDeck.drawCard();
 
 	}
-
+	
+	/** void run() = starts all the threads, updates gamestate and makes the thread run on a 60 fps */
 	public void run() {
 		(new Thread(new DrawHandler())).start();
 		(new Thread(new AI())).start();
@@ -84,7 +109,8 @@ public class Main implements MouseListener {
 			}
 		}
 	}
-
+	
+	/** update(gameState) = updates the gameState and checks what cards both player and enemy are able to play */
 	void update(int gameS) {
 		int arraySize = playerDeck.inHand.size();
 		playerDeck.notPlayable.clear();
@@ -103,7 +129,7 @@ public class Main implements MouseListener {
 				playerDeck.notPlayable.add(playerDeck.inHand.get(i));
 			}
 		}
-
+		
 		int arrayEnemySize = enemyDeck.inHand.size();
 		enemyDeck.notPlayable.clear();
 		for (int i = 0; i < arrayEnemySize; i++) {
@@ -138,6 +164,8 @@ public class Main implements MouseListener {
 
 		}
 	}
+	
+	/** void checkDie() = checks if a card has less than 1 hp and transfers the card to the graveyard */
 	void checkDie(){
 		for( int i = 0 ; i < playerDeck.onTable.size(); i++){
 			if( playerDeck.onTable.get(i).card_stats[1] < 1){
@@ -150,7 +178,8 @@ public class Main implements MouseListener {
 			}
 		}
 	}
-
+	
+	/** void pullCard() = draws a card depending on the gameState */
 	private static void pullCard() {
 		if (gameState == 1) {
 			playerDeck.drawCard();
@@ -159,7 +188,8 @@ public class Main implements MouseListener {
 			enemyDeck.drawCard();
 		}
 	}
-
+	
+	/** void playCard() = checks if the player can play a card and processes the right mechanics of the card */
 	private void playCard() {
 		for (int i = 0; i < playerDeck.inHand.size(); i++) {
 			if (inHandBoxes[i][1] == 1
@@ -194,19 +224,22 @@ public class Main implements MouseListener {
 
 		}
 	}
-
+	
 	public static void enemyAttack() {
 
 	}
-
+	
+	/** void enemyEnd() = ends the turn of the nemy */
 	public static void enemyEnd() {
 		endEnemyTurn();
 	}
 
+	/** void selectCard( index of inhand card ) = simulates a mouse click for the AI */
 	public static void selectCard(int i) {
 		enemyInHand[i][1] = 1;
 	}
-
+	
+	/** void playEnemyCard(index of inhand card ) = checks if the ememy can play a card and processes the right mechanics of the card */ 
 	public static void playEnemyCard(int i) {
 		if (enemyInHand[i][1] == 1
 				&& !enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
@@ -246,7 +279,7 @@ public class Main implements MouseListener {
 		}
 
 	}
-	
+	/** void attackCard() = lets the player attack a card */
 	private void attackCard() {
 		int playerMinionAttack = 0;
 		int playerMinionHealth = 0;
@@ -273,6 +306,8 @@ public class Main implements MouseListener {
 		clearSelected();
 		DrawHandler.buttons[3][2] = 0;
 	}
+	
+	/** void buttonClickBoxes = checks what button is clicked and executes a function according to the button case */
 	private void buttonClickBoxes(int x, int y) {
 		for (int i = 0; i < DrawHandler.buttons.length; i++) {
 			if (x > DrawHandler.buttons[i][0]
@@ -300,19 +335,22 @@ public class Main implements MouseListener {
 			}
 		}
 	}
-
+	
+	/** void endEnemyTurn() = simulates end turn mouseclick for the enemy */
 	public static void endEnemyTurn() {
 		gameState = 1;
 		Player.setMana(Player.getMana() + 10);
 		pullCard();
 	}
-
+	
+	/** void endTurn() = ends the turn of the player */
 	private void endTurn() {
 		gameState = 2;
 		Enemy.setMana(Enemy.getMana() + 10);
 		pullCard();
 	}
-
+	
+	/** void clearSelected() = clears all the selected cards */
 	static void clearSelected() {
 		for (int i = 0; i < 9; i++) {
 			inHandBoxes[i][1] = 0;
@@ -325,7 +363,8 @@ public class Main implements MouseListener {
 		}
 
 	}
-
+	
+	/** void clickBoxes( x axle, y axle ) = checks on what button you clicked and changes selected state accordingly */
 	private void clickBoxes(int x, int y) {
 		System.out.println(x + " - " + y);
 		// inHand
@@ -406,13 +445,14 @@ public class Main implements MouseListener {
 
 		// heros -- TODO write hero click boxes
 	}
-
+	
+	/** void mouseClicked(MouseEvent e) = happens when the mouse is clicked */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		clickBoxes(e.getX() - 3, e.getY() - 26);
 
 	}
-
+	
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -436,16 +476,19 @@ public class Main implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	/** void setPlayerDeck(Deck of the player) = sets the deck of the player so the main can use it */
 	public static void setPlayerDeck(Deck a) {
 		playerDeck = a;
 	}
-
+	
+	/** void setEnemyDeck(Deck of the enemy) = sets the deck of the enemy so the main can use it */
 	public static void setEnemyDeck(Deck a) {
 		System.out.println(a.deck_name);
 		enemyDeck = a;
 	}
-
+	
+	/** boolean boardHasTaunt() = checks if the board of the player contains a taunt */
 	public static boolean boardHasTaunt() {
 		int arrayListSize = playerDeck.onTable.size();
 		for (int i = 0; i < arrayListSize; i++) {
@@ -455,6 +498,8 @@ public class Main implements MouseListener {
 		}
 		return false;
 	}
+	
+	/** boolean boardHasTauntEnemy() = checks if the board of the enemy contains a taunt */
 	public static boolean boardHasTauntEnemy() {
 		int arrayListSize = enemyDeck.onTable.size();
 		for (int i = 0; i < arrayListSize; i++) {
@@ -464,7 +509,8 @@ public class Main implements MouseListener {
 		}
 		return false;
 	}
-
+	
+	/** void playerBoxes() = changes the active state of buttons according to mechanics and cards that lay on top of it */
 	public static void playerBoxes() {
 		
 		if(DrawHandler.buttons[3][3] == 2){

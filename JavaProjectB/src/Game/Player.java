@@ -46,7 +46,7 @@ public class Player {
 		}
 	}
 	/**
-	 * Returns what random here is picked for the player.
+	 * Returns what random hero is picked for the player.
 	 */
 	static public String getHero(){
 		Random rn = new Random();

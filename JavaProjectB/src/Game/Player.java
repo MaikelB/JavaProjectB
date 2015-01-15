@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.Random;
+
 public class Player {
 	static private int health=20, mana=10;
 	static private String hero;
@@ -44,15 +46,16 @@ public class Player {
 		}
 	}
 	/**
-	 * Is called from another class to set player hero
-	 */
-	public void setHero(String he){
-		hero = he;
-	}
-	/**
-	 * Returns what hero the player has.
+	 * Returns what random here is picked for the player.
 	 */
 	static public String getHero(){
+		Random rn = new Random();
+		int pickhero = rn.nextInt(3 - 1 + 1) + 1;
+		switch (pickhero){
+		case 1: hero = "deck1"; break;
+		case 2: hero = "deck2"; break;
+		case 3: hero = "deck3"; break;
+		}
 		return hero;
 	}
 }

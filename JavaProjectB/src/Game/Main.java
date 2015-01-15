@@ -27,7 +27,7 @@ public class Main implements MouseListener {
 		Main game = new Main();
 		FileHandler fileHandler = new FileHandler();
 		try {
-			fileHandler.loadDeck("deck1", true);
+			fileHandler.loadDeck(Player.getHero(), true);
 			fileHandler.loadDeck(Enemy.getHero(), false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

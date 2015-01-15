@@ -145,7 +145,9 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		bbg.setFont(new Font("TimesRoman", Font.PLAIN, 11));
 		
-		
+		//Mana display
+		bbg.drawString("" + Enemy.getMana() + "/40", 1005, 150);
+		bbg.drawString("" + Player.getMana() + "/40", 1005, 625);
 		
 		
 		
@@ -255,6 +257,10 @@ public class DrawHandler extends JFrame implements Runnable {
 					s2 = s1;
 					bbg.drawString(s2, 30+95*i , 217);
 				}
+				s1 = "" + Main.enemyDeck.getOnSpells(i).getAttack();
+				bbg.drawString(s1, 50 + (95*i), 295);
+				s1 = "-";
+				bbg.drawString(s1, 90 + (95*i), 295);
 				
 			}	
 		}
@@ -350,6 +356,10 @@ public class DrawHandler extends JFrame implements Runnable {
 					s2 = s1;
 					bbg.drawString(s2, 230+95*i , 397);
 				}
+				s1 = "" + Main.playerDeck.getOnTable(i).getAttack();
+				bbg.drawString(s1, 250 + (95*i), 475);
+				s1 = "" + Main.playerDeck.getOnTable(i).getDefense();
+				bbg.drawString(s1, 290 + (95*i), 475);
 			}
 			
 		}
@@ -386,13 +396,17 @@ public class DrawHandler extends JFrame implements Runnable {
 						s2 = s1.substring(0 + 13*a, 13+13*a);
 						s2 = s2 + "-";
 					}
-					bbg.drawString(s2, 37+95*i , 397+10*a);
+					bbg.drawString(s2, 30+95*i , 397+10*a);
 				}
 			}
 			else{
 				s2 = s1;
-				bbg.drawString(s2, 37+95*i , 397);
+				bbg.drawString(s2, 30+95*i , 397);
 			}
+			s1 = "" + Main.playerDeck.getOnSpells(i).getAttack();
+			bbg.drawString(s1, 50 + (95*i), 475);
+			s1 = "-";
+			bbg.drawString(s1, 90 + (95*i), 475);
 		}
 		
 		//sellection draw

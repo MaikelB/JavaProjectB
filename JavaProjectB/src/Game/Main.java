@@ -88,24 +88,42 @@ public class Main implements MouseListener {
 	}
 
 	void update(int gameS) {
+		int arraySize = playerDeck.inHand.size();
+		playerDeck.notPlayable.clear();
+		for (int i = 0; i < arraySize; i++) {
+			int mana = Player.getMana()-playerDeck.getHandCard(i).getManaCost();
+			if (playerDeck.onSpells.size() >= 2
+					&& playerDeck.inHand.get(i).getSpecial() == 4) {
+				playerDeck.notPlayable.add(playerDeck.inHand.get(i));
+			} if (mana < 0)
+			{
+				playerDeck.notPlayable.add(playerDeck.inHand.get(i));
+			} if (playerDeck.inHand.get(i).getSpecial() != 4 && playerDeck.onTable.size() >= 9) {
+				playerDeck.notPlayable.add(playerDeck.inHand.get(i));
+			}
+		}
+		
+		arraySize = enemyDeck.inHand.size();
+		enemyDeck.notPlayable.clear();
+		for (int i = 0; i < arraySize; i++) {
+			int mana = Enemy.getMana()-enemyDeck.getHandCard(i).getManaCost();
+			if (enemyDeck.onSpells.size() >= 2
+					&& enemyDeck.inHand.get(i).getSpecial() == 4) {
+				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
+			} if (mana < 0)
+			{
+				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
+			} if (enemyDeck.inHand.get(i).getSpecial() != 4 && enemyDeck.onTable.size() >= 9) {
+				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
+			}
+		}
 		if (gameS == 0) {
 
 		}
 		if (gameS == 1) {
 			myTurn = true;
 			AI.enemyTurn = false;
-			playerDeck.notPlayable.clear();
-			int arraySize = playerDeck.inHand.size();
 			
-			
-			
-			for (int i = 0; i < arraySize; i++) {
-				if (playerDeck.onSpells.size() >= 2
-						&& playerDeck.inHand.get(i).getRarity() == 4) {
-					playerDeck.notPlayable.add(playerDeck.inHand.get(i));
-				}
-			}
-
 			playerBoxes();
 
 		}
@@ -113,13 +131,7 @@ public class Main implements MouseListener {
 			AI.enemyTurn = true;
 			myTurn = false;
 			enemyDeck.notPlayable.clear();
-			int arraySize = enemyDeck.inHand.size();
-			for (int i = 0; i < arraySize; i++) {
-				if (enemyDeck.onSpells.size() >= 2
-						&& enemyDeck.inHand.get(i).getRarity() == 4) {
-					enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
-				}
-			}
+			
 		}
 	}
 
@@ -133,10 +145,8 @@ public class Main implements MouseListener {
 	}
 
 	private void playCard() {
-		for (int i = 0; i < playerDeck.inHand.size(); i++) {
-			
-			
-			if (inHandBoxes[i][1] == 1) {
+		for (int i = 0; i < playerDeck.inHand.size(); i++) {			
+			if (inHandBoxes[i][1] == 1 && !playerDeck.notPlayable.contains(playerDeck.inHand.get(i))) {
 				if (playerDeck.getHandCard(i).getSpecial() == 2) {
 					int tableSize = playerDeck.onTable.size();
 					for (int a = 0; a < tableSize; a++) {
@@ -158,13 +168,9 @@ public class Main implements MouseListener {
 					playerDeck.getHandCard(i).buffAttack(extraAttack);
 
 				}
-				
-				int mana = Player.getMana()-playerDeck.getHandCard(i).getManaCost();
 				int cost = playerDeck.getHandCard(i).getManaCost();
-				if(!(mana < 0)){
 				playerDeck.cardPlay(i);
 				Player.setMana(Player.getMana()-cost);
-				}
 				clearSelected();
 			}
 
@@ -172,30 +178,30 @@ public class Main implements MouseListener {
 	}
 
 	public static void enemyAttack() {
-		buttonClickEnemy(2);
+		
 	}
 
 	public static void enemyEnd() {
-		buttonClickEnemy(3);
+		endEnemyTurn();
 	}
 
 	public static void selectCard(int i) {
 		enemyInHand[i][1] = 1;
 	}
 
-	public static void playEnemyCard() {
-		if (!enemyDeck.notPlayable.contains(enemyDeck.inHand.get(0))) {
-			if (enemyDeck.getHandCard(0).getSpecial() == 2) {
+	public static void playEnemyCard(int i) {
+		if (enemyInHand[i][1] == 1 && !enemyDeck.notPlayable.contains(enemyDeck.inHand.get(i))) {
+			if (enemyDeck.getHandCard(i).getSpecial() == 2) {
 				int tableSize = enemyDeck.onTable.size();
 				for (int a = 0; a < tableSize; a++) {
 					enemyDeck.onTable.get(a).buffDefense(1);
 				}
-			} else if (enemyDeck.getHandCard(0).getSpecial() == 3) {
+			} else if (enemyDeck.getHandCard(i).getSpecial() == 3) {
 				int tableSize = enemyDeck.onTable.size();
 				for (int b = 0; b < tableSize; b++) {
 					enemyDeck.onTable.get(b).buffAttack(1);
 				}
-			} else if (enemyDeck.getHandCard(0).getSpecial() == 4) {
+			} else if (enemyDeck.getHandCard(i).getSpecial() == 4) {
 				int tableSize = enemyDeck.onTable.size();
 				int extraAttack = 0;
 				for (int d = 0; d < tableSize; d++) {
@@ -203,38 +209,17 @@ public class Main implements MouseListener {
 						extraAttack += 1;
 					}
 				}
-				enemyDeck.getHandCard(0).buffAttack(extraAttack);
+				enemyDeck.getHandCard(i).buffAttack(extraAttack);
 
 			}
-			int mana = Enemy.getMana()-enemyDeck.getHandCard(0).getManaCost();
-			int cost = enemyDeck.getHandCard(0).getManaCost();
-			if(!(mana < 0)){
-			enemyDeck.cardPlay(0);
-			Enemy.setMana(Player.getMana()-cost);
-			}
+			int cost = enemyDeck.getHandCard(i).getManaCost();
+			enemyDeck.cardPlay(i);
+			Enemy.setMana(Enemy.getMana()-cost);
 			
 		}
 
 	}
 
-	public static void buttonClickEnemy(int i) {
-		switch (i) {
-		case 0: /* chooseEnemyHero(); */
-			System.out.println("buttoncheck enemy hero");
-			break;
-		case 1:
-			playEnemyCard();
-			System.out.println("buttoncheck enemy play");
-			break;
-		case 2: /* attackEnemyCard(); */
-			System.out.println("buttoncheck enemy attack");
-			break;
-		case 3:
-			endEnemyTurn();
-			System.out.println("buttoncheck enemy end");
-			break;
-		}
-	}
 
 	private void buttonClickBoxes(int x, int y) {
 		for (int i = 0; i < DrawHandler.buttons.length; i++) {
@@ -276,11 +261,12 @@ public class Main implements MouseListener {
 		pullCard();
 	}
 
-	private void clearSelected() {
+	static void clearSelected() {
 		for (int i = 0; i < 9; i++) {
 			inHandBoxes[i][1] = 0;
 			playerOnTableBoxes[i][1] = 0;
 			enemyOnTableBoxes[i][1] = 0;
+			enemyInHand[i][1] = 0;
 		}
 		for (int i = 0; i < 2; i++) {
 			playerOnSpellsBoxes[i][1] = 0;

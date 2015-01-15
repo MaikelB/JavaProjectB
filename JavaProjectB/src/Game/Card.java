@@ -54,22 +54,6 @@ public class Card {
 	 * if none, return null
 	 */
 	public int getSpecial() {
-		switch(special) {
-		case 0:		System.out.println("Nothing");
-					break;
-		case 1:		System.out.println("Spell Power");
-					break;
-		case 2:		System.out.println("Defense up");
-					break;
-		case 3:		System.out.println("attack up");
-					break;
-		case 4:		System.out.println("Spell");
-					break;
-		case 5:		System.out.println("Taunt");
-					break;
-		default: 	System.out.println("Wrong input ()");
-					return 3058;
-		}
 		return special;
 	}
 	
@@ -77,20 +61,6 @@ public class Card {
 	 * if none, return null
 	 */
 	public int getRarity() {
-		/*switch(rarity) {
-		case 0:		System.out.println("common");
-					break;
-		case 1:		System.out.println("uncommon");
-					break;
-		case 2:		System.out.println("rare");
-					break;
-		case 3:		System.out.println("legendary");
-					break;
-		case 4:		System.out.println("god-like");
-					break;
-		default: 	System.out.println("Wrong input (LINE 79 CARD.JAVA)");
-					return 3079;
-		}*/
 		return rarity;
 	}
 	

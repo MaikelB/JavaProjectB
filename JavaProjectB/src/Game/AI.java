@@ -50,11 +50,11 @@ public class AI implements Runnable {
 	}
 
 	void enemyPlay() {
-		getEnemyHand();
 		if (getEnemyHand() > 0) {
-			for (int i = 0; i < enemyInhand; i++) {
+			for (int i = 0; i < getEnemyHand(); i++) {
+				Main.clearSelected();
 				Main.selectCard(i);
-				Main.playEnemyCard();
+				Main.playEnemyCard(i);
 				Main.enemyAttack();
 				try {
 					Thread.sleep(1000);

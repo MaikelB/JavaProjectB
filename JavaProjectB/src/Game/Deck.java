@@ -33,6 +33,11 @@ public class Deck {
 		deck_desc 	= desc;		
 	}
 	
+	public boolean cardPlayable() {
+		
+
+		return false;
+	}
 	/** void cardPlay( index of the card to play )
 	 * removes the card in hand
 	 * and adds it onTable or OnSpells depending on it's special

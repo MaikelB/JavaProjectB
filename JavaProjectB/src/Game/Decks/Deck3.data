@@ -1,0 +1,151 @@
+This file contains the information for deck 3.
+Please be careful with changing this file.
+
+;{
+	Deck_name = Death Waltz
+	Deck_description = These creatures are dead, or have never lived. They are extremely annoying.
+	
+	{
+		Card_name = Living Wall
+		Card_description = A moving wall made out of arms.
+		Card_stats = 1 : 6
+		Card_special = 5
+		Card_rarity = 3
+	}
+	{
+		Card_name = Crawler
+		Card_description = These Human-like creatures are mostly found in caves and kill anything they find.
+		Card_stats = 2 : 3
+		Card_special = 0
+		Card_rarity = 1
+	
+	}
+	{
+		Card_name = Crawler
+		Card_description = These Human-like creatures are mostly found in caves and kill anything they find.
+		Card_stats = 2 : 3
+		Card_special = 0
+		Card_rarity = 1
+	
+	}
+	{
+		Card_name = Crawler
+		Card_description = These Human-like creatures are mostly found in caves and kill anything they find.
+		Card_stats = 2 : 3
+		Card_special = 0
+		Card_rarity = 1
+	
+	}
+	{
+		Card_name = Corpse Fume
+		Card_description = A moving pile of corpses wretched in the smell of rotten flesh
+		Card_stats = 2 : 4
+		Card_special = 5
+		Card_rarity = 2
+	}
+	{
+		Card_name = Corpse Fume
+		Card_description = A moving pile of corpses wretched in the smell of rotten flesh
+		Card_stats = 2 : 4
+		Card_special = 5
+		Card_rarity = 2
+	}
+	{
+		Card_name = Jiangshi minion
+		Card_description = Humans who were bitten by Jiangshi turn into their minions to do their bidding.
+		Card_stats = 3 : 2
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Jiangshi minion
+		Card_description = Humans who were bitten by Jiangshi turn into their minions to do their bidding.
+		Card_stats = 3:2
+		Card_special = 0
+		Card_rarity = 1
+	}
+	{
+		Card_name = Bone wolf
+		Card_description = A revived version of the wolves found in the forest.
+		Card_stats = 4:2
+		Card_special = 0
+		Card_rarity = 3
+	}
+	{
+		Card_name = Bone wolf
+		Card_description = A revived version of the wolves found in the forest.
+		Card_stats = 4:2
+		Card_special = 0
+		Card_rarity = 3
+	}
+	{
+		Card_name = Fallen Angel
+		Card_description = This angel has fallen from heaven after giving in to temptation.
+		Card_stats = 6:3
+		Card_special = 0
+		Card_rarity = 4
+	}
+	{
+		Card_name = Clock Corpse
+		Card_description = The clock freezes and a curtain of daggers appear, hitting the enemy when time continues.
+		Card_stats = 4 : 1
+		Card_special = 4
+		Card_rarity = 2
+	}
+	{
+		Card_name = Hell Sign
+		Card_description = A Mountain of a Thousand Needles falls on the battlefield
+		Card_stats = 8 : 1
+		Card_special = 4
+		Card_rarity = 4 
+	}
+	{
+		Card_name = Toxic Fume
+		Card_description = Toxic gas is appears out of nowhere.
+		Card_stats = 2 : 1 
+		Card_special = 4
+		Card_rarity = 1
+	}
+	{
+		Card_name = Toxic Fume
+		Card_description = Toxic gas is appears out of nowhere.
+		Card_stats = 2 : 1 
+		Card_special = 4
+		Card_rarity = 1
+	}
+	{
+		Card_name = Disattached hand
+		Card_description = A hand that crawls all over the place.
+		Card_stats = 0 : 1
+		Card_special = 5
+		Card_rarity = 0
+	}
+	{
+		Card_name = Disattached hand
+		Card_description = A hand that crawls all over the place.
+		Card_stats = 0 : 1
+		Card_special = 5
+		Card_rarity = 0
+	}
+	{
+		Card_name = Disattached hand
+		Card_description = A hand that crawls all over the place.
+		Card_stats = 0 : 1
+		Card_special = 5
+		Card_rarity = 0
+	}
+	{
+		Card_name = The Wicked Hermit Who Passes Through Walls
+		Card_description = This is the Taoist who is behind the living dead with her taboo arts.
+		Card_stats = 3 : 6
+		Card_special = 1
+		Card_rarity = 5
+	}
+	{
+		Card_name = Living Wall
+		Card_description = A moving wall made out of arms.
+		Card_stats = 1 : 6
+		Card_special = 5
+		Card_rarity = 3
+	}
+};

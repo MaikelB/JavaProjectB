@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.Random;
+
 public class Enemy {
 	static private int health=20, mana=10;
 	static private String hero;
@@ -27,18 +29,6 @@ public class Enemy {
 			mana = 40;
 		}
 	}
-	/** setHero = This uses Math.random to pick a random number between 1 and 3 and then puts it through the switch statement to
-	 * decide which deck is picked. the Main uses this to load the enemy deck.
-	 */
-	public void setHero(String he){
-		hero = he;
-		int pickhero = (int) Math.random()*2 + 1;
-		switch (pickhero){
-		case 1: he = "deck1"; break;
-		case 2: he = "deck2"; break;
-		}
-	
-	}
 	/** getHealth = returns player health.
 	 */
 	static public int getHealth(){
@@ -52,8 +42,15 @@ public class Enemy {
 	/** getHero = Returns what hero is picked for the Enemy player.
 	 */
 	static public String getHero(){
+		Random rn = new Random();
+		int pickhero = rn.nextInt(3 - 1 + 1) + 1;
+		switch (pickhero){
+		case 1: hero = "deck1"; break;
+		case 2: hero = "deck2"; break;
+		case 3: hero = "deck3"; break;
+		}
 		return hero;
+
+
 	}
-
-
 }

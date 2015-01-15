@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class FileHandler {
 	/**Creates the arraylist with the decks
-	 * 2 String arrays which have the deck and the path to the deck data file
+	 * 3 String arrays which have the deck and the path to the deck data file
 	 * adding strings for Deck name, deck description, card name and card description.
 	 * adding ints for Card_special and card_rarity
 	 * adding int array for card_stats, [0] is attack and [1] is defence
@@ -20,16 +20,20 @@ public class FileHandler {
 	static private String[] deck2 = {
 			"deck2",
 			"src\\Game\\Decks\\Deck2.data"};
+	static private String[] deck3 = {
+			"deck3",
+			"src\\Game\\Decks\\Deck3.data"};
 	static private String dn, dd, cn, cd;
 	static private int spec, rar;
 	static private int[] st = new int[2];
 	static private boolean searchd = true, searchc = false, reader = true;
 	static private String read = "test";
 
-	/**add deck1 and 2 to decks arraylist*/
+	/**add deck1, 2 and 3 to decks arraylist*/
 	public FileHandler() {
 		decks.add(deck1);
 		decks.add(deck2);
+		decks.add(deck3);
 	}
 
 	public static void loadDeck(String deckName, boolean player) throws IOException {

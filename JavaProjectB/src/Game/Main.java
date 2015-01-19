@@ -70,13 +70,6 @@ public class Main implements MouseListener {
 	
 	/** void initialize() = draws player cards and initializes the game */
 	private void initialize() {
-		// warning!!! This is is for testing. needs to be edited for release
-		for (int i = 0; i < 9; i++) {
-			inHandBoxes[i][0] = 1;
-			inHandBoxes[i][1] = 0;
-
-		}
-
 		playerDeck.drawCard();
 		playerDeck.drawCard();
 		playerDeck.drawCard();
@@ -133,7 +126,7 @@ public class Main implements MouseListener {
 		int arrayEnemySize = enemyDeck.inHand.size();
 		enemyDeck.notPlayable.clear();
 		for (int i = 0; i < arrayEnemySize; i++) {
-			int mana = Enemy.getMana() - enemyDeck.getHandCard(i).getManaCost();
+			//int mana = Enemy.getMana() - enemyDeck.getHandCard(i).getManaCost();
 			if (enemyDeck.onSpells.size() >= 2
 					&& enemyDeck.inHand.get(i).getSpecial() == 4) {
 				enemyDeck.notPlayable.add(enemyDeck.inHand.get(i));
@@ -214,6 +207,9 @@ public class Main implements MouseListener {
 						}
 					}
 					playerDeck.getHandCard(i).buffAttack(extraAttack);
+					for (int e = 0; e < enemyDeck.onTable.size(); e++){
+						enemyDeck.onTable.get(e).debuffDefense(playerDeck.getHandCard(i).getAttack());
+					}
 
 				}
 				int cost = playerDeck.getHandCard(i).getManaCost();
@@ -267,7 +263,9 @@ public class Main implements MouseListener {
 						}
 					}
 					enemyDeck.getHandCard(i).buffAttack(extraAttack);
-
+					for (int e = 0; e < enemyDeck.onTable.size(); e++){
+						playerDeck.onTable.get(e).debuffDefense(enemyDeck.getHandCard(i).getAttack());
+					}
 				}
 
 				enemyDeck.cardPlay(i);
@@ -282,20 +280,16 @@ public class Main implements MouseListener {
 	/** void attackCard() = lets the player attack a card */
 	private void attackCard() {
 		int playerMinionAttack = 0;
-		int playerMinionHealth = 0;
 		int playerMinionIndex = 0;
 		for(int a = 0; a < playerOnTableBoxes.length; a++) {
 			if(playerOnTableBoxes[a][1] == 1) {
 				playerMinionAttack = playerDeck.getOnTable(a).getAttack();
-				playerMinionHealth = playerDeck.getOnTable(a).getDefense();	
 				playerMinionIndex = a;
 			}
 		}
-		int enemyMinionHP = 0;
 		int enemyMinionAtt = 0;
 		for(int i = 0; i < enemyOnTableBoxes.length; i++) {
 			if(enemyOnTableBoxes[i][1] == 1) {
-				enemyMinionHP = enemyDeck.getOnTable(i).getDefense();
 				enemyMinionAtt = enemyDeck.getOnTable(i).getAttack();
 				
 				enemyDeck.getOnTable(i).debuffDefense(playerMinionAttack);

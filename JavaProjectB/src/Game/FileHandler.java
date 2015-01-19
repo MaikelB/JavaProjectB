@@ -16,13 +16,13 @@ public class FileHandler {
 	static private List<String[]> decks = new ArrayList<String[]>();
 	static private String[] deck1 = {
 			"deck1",
-			"src\\Game\\Decks\\Deck1.data" };
+			"Decks/Deck1.data" };
 	static private String[] deck2 = {
 			"deck2",
-			"src\\Game\\Decks\\Deck2.data"};
+			"Decks/Deck2.data"};
 	static private String[] deck3 = {
 			"deck3",
-			"src\\Game\\Decks\\Deck3.data"};
+			"Decks/Deck3.data"};
 	static private String dn, dd, cn, cd;
 	static private int spec, rar;
 	static private int[] st = new int[2];
@@ -36,15 +36,14 @@ public class FileHandler {
 		decks.add(deck3);
 	}
 
-	public static void loadDeck(String deckName, boolean player) throws IOException {
+	public void loadDeck(String deckName, boolean player) throws IOException {
 		/**if statement to check if its loading the player, or enemy deck, true = player, else enemy deck. */
 		if (player) {
 			for (int i = 0; i < decks.size(); i++) {
 				String[] s = decks.get(i);
 				if (s[0].equals(deckName)) {
-					
-					FileReader f = new FileReader(s[1]);
-					BufferedReader br = new BufferedReader(f);
+					InputStream file = getClass().getResourceAsStream(s[1]);
+					BufferedReader br = new BufferedReader(new InputStreamReader(file));
 					/**start of the file reading while */
 					while (reader) {
 						while (searchd) {
@@ -132,8 +131,8 @@ public class FileHandler {
 				String[] s = decks.get(i);
 				if (s[0].equals(deckName)) {
 					
-					FileReader f = new FileReader(s[1]);
-					BufferedReader br = new BufferedReader(f);
+					InputStream file = getClass().getResourceAsStream(s[1]);
+					BufferedReader br = new BufferedReader(new InputStreamReader(file));
 					/**start of the file reading while */
 					while (reader) {
 						while (searchd) {

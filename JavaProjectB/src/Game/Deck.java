@@ -8,6 +8,7 @@ public class Deck {
 	public String deck_name;
 	
 	/**String deck_desc = holds the description of the deck */
+	@SuppressWarnings("unused")
 	private String deck_desc;
 	
 	public ArrayList<Card> notPlayable = new ArrayList<Card>();

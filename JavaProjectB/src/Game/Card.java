@@ -3,11 +3,9 @@ package Game;
 public class Card {
 	
 	/** String card_name = holds the name of the card */
-	@SuppressWarnings("unused")
 	public String card_name;
 	
 	/** String card_desc = holds the information of the card in text format */
-	@SuppressWarnings("unused")
 	public String card_desc; 
 	
 	private Boolean showBack = true;
@@ -36,9 +34,6 @@ public class Card {
 	 * 4 = GOD-LIKE (pink) = 30 mana
 	 */
 	private int rarity;
-	
-	private int manaCost;
-	
 	/** Card( Name, Description, Special ability number, Array with attack&defense ) */
 	public Card(String nm, String desc, int spec, int[] st, int rar) {
 		card_stats = new int[2];

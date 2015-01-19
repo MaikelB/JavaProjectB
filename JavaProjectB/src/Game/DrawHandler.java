@@ -159,24 +159,24 @@ public class DrawHandler extends JFrame implements Runnable {
 		int arraySize;
 		
 		//enemy deck
-		if(main.enemyDeck.deck.size() != 0) {
+		if(Main.enemyDeck.deck.size() != 0) {
 			bbg.drawImage(backCard, 50, 20, this);
 		}
 		//enemy graveyard
-		if(main.enemyDeck.graveyard.size() != 0) {
+		if(Main.enemyDeck.graveyard.size() != 0) {
 			bbg.drawImage(backCard, 1146, 20, this);
 		}
 		// emeny deck
-		arraySize = main.enemyDeck.inHand.size();
+		arraySize = Main.enemyDeck.inHand.size();
 		for(int i = 0; i < arraySize; i++) {
 				bbg.drawImage(backCard, 215 + (95*i), -94 , this);
 			
 		}
 		//enemy table
-		arraySize = main.enemyDeck.onTable.size();
+		arraySize = Main.enemyDeck.onTable.size();
 		for(int i = 0; i < arraySize; i++) {
-			int rarity = main.enemyDeck.getOnTable(i).getRarity();
-			if(main.enemyDeck.getOnTable(i).getShowBack()) {
+			int rarity = Main.enemyDeck.getOnTable(i).getRarity();
+			if(Main.enemyDeck.getOnTable(i).getShowBack()) {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
@@ -220,10 +220,10 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		
 		//enemy spells
-		arraySize = main.enemyDeck.onSpells.size();
+		arraySize = Main.enemyDeck.onSpells.size();
 		for(int i = 0; i < arraySize; i++) {
-			int rarity = main.enemyDeck.getOnSpells(i).getRarity();
-			if(main.enemyDeck.getOnSpells(i).getShowBack()) {
+			int rarity = Main.enemyDeck.getOnSpells(i).getRarity();
+			if(Main.enemyDeck.getOnSpells(i).getShowBack()) {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
@@ -267,18 +267,18 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		
 		//player deck
-		if(main.playerDeck.deck.size() != 0) {
+		if(Main.playerDeck.deck.size() != 0) {
 			bbg.drawImage(backCard, 50, 560, this);
 		}
 		//player graveyard
-		if(main.playerDeck.graveyard.size() != 0) {
+		if(Main.playerDeck.graveyard.size() != 0) {
 			bbg.drawImage(backCard, 1146, 560, this);
 		}
 		//player hand
-		arraySize = main.playerDeck.inHand.size();
+		arraySize = Main.playerDeck.inHand.size();
 		for(int i = 0; i < arraySize; i++) {
-			int rarity = main.playerDeck.getHandCard(i).getRarity();
-			if(main.playerDeck.getHandCard(i).getShowBack()) {
+			int rarity = Main.playerDeck.getHandCard(i).getRarity();
+			if(Main.playerDeck.getHandCard(i).getShowBack()) {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
@@ -318,10 +318,10 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		
 		//player table
-		arraySize = main.playerDeck.onTable.size();
+		arraySize = Main.playerDeck.onTable.size();
 		for(int i = 0; i < arraySize; i++) {
-			int rarity = main.playerDeck.getOnTable(i).getRarity();
-			if(main.playerDeck.getOnTable(i).getShowBack()) {
+			int rarity = Main.playerDeck.getOnTable(i).getRarity();
+			if(Main.playerDeck.getOnTable(i).getShowBack()) {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
@@ -365,10 +365,10 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		
 		//player spells
-		arraySize = main.playerDeck.onSpells.size();
+		arraySize = Main.playerDeck.onSpells.size();
 		for(int i = 0; i < arraySize; i++) {
-			int rarity = main.playerDeck.getOnSpells(i).getRarity();
-			if(main.playerDeck.getOnSpells(i).getShowBack()) {
+			int rarity = Main.playerDeck.getOnSpells(i).getRarity();
+			if(Main.playerDeck.getOnSpells(i).getShowBack()) {
 				bbg.drawImage(backCard, 215 + (95*i), 674, this);
 			} else {
 				switch(rarity) {
@@ -411,10 +411,10 @@ public class DrawHandler extends JFrame implements Runnable {
 		}
 		
 		//selection draw
-		arraySize = main.playerDeck.inHand.size();
+		arraySize = Main.playerDeck.inHand.size();
 		for (int i = 0; i < arraySize; i++){
 			if(Main.inHandBoxes[i][1] == 1){
-				int rarity = main.playerDeck.getHandCard(i).getRarity();
+				int rarity = Main.playerDeck.getHandCard(i).getRarity();
 				
 				switch(rarity) {
 				case 0:		bbg.drawImage(commonCard, windowWidth/2-90, windowHeight/2-120, 180,240,this);
@@ -460,7 +460,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			
 		}
 		
-		arraySize = main.playerDeck.onTable.size();
+		arraySize = Main.playerDeck.onTable.size();
 		for (int i = 0; i < arraySize; i++){
 			if(Main.playerOnTableBoxes[i][1] == 1){
 				
@@ -469,7 +469,7 @@ public class DrawHandler extends JFrame implements Runnable {
 			
 		}
 		
-		arraySize = main.enemyDeck.onTable.size();
+		arraySize = Main.enemyDeck.onTable.size();
 		for (int i = 0; i < arraySize; i++){
 			if(Main.enemyOnTableBoxes[i][1] == 1){
 				
